@@ -44,11 +44,9 @@ public class Player : MonoBehaviour {
 		}
 
 		if (onGround) {
-			if(body.velocity.y<0.01f && body.velocity.y>-0.01f){
-				if (Input.GetAxis ("Jump") != 0) {
-					body.AddForce(new Vector2(0,250));
-					onGround = false;
-				}
+			if (Input.GetAxis ("Jump") != 0) {
+				body.AddForce(new Vector2(0,250));
+				onGround = false;
 			}
 		}
 
@@ -61,6 +59,10 @@ public class Player : MonoBehaviour {
 		float angle = col.gameObject.transform.localEulerAngles.z;
 
 		gameObject.transform.localEulerAngles = new Vector3 (0, 0, angle);
+	}
+
+	void OnCollisionExit2D(Collision2D col){
+		onGround = false;
 	}
 
 
