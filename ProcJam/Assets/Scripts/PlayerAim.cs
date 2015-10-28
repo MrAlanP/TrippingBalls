@@ -38,7 +38,9 @@ public class PlayerAim : MonoBehaviour {
 		Vector2 aimPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
 
-		if (Input.GetMouseButtonDown (0)) {
+		 
+        if (Input.GetButtonDown("Fire1")) 
+        {
 			Shoot();
 		}
 
@@ -51,6 +53,7 @@ public class PlayerAim : MonoBehaviour {
 	void Shoot(){
 		GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
 		Vector2 spawnPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * 0.1f;
+		newBand.transform.SetParent (player.projectiles.transform);
 		newBand.transform.localPosition = player.transform.localPosition + new Vector3 (spawnPos.x, spawnPos.y, 0);
 		RubberBandBullet rubberBand = newBand.GetComponent<RubberBandBullet> ();
 		rubberBand.Shoot (angle);
