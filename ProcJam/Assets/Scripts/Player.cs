@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 	
@@ -14,6 +15,9 @@ public class Player : MonoBehaviour {
 	bool onGround = false;
 
 	int collisionCount = 0;
+
+
+
 
 
 	public enum ControlType{
