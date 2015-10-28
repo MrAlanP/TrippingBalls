@@ -3,13 +3,14 @@ using System.Collections;
 
 public class enemy1 : MonoBehaviour 
 {
-    public Transform player;
+    Transform player;
     float playerTransX;
     float speed;
 	// Use this for initialization
 	void Start () 
     {
         speed = 3.50f;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
 	}
 	
 	// Update is called once per frame
@@ -32,7 +33,7 @@ public class enemy1 : MonoBehaviour
     {
         if (other.gameObject.name=="rubberBand")
         {
-            GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2 (other.transform.localPosition.x, 0));
+            GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2 (other.transform.localPosition.x, other.transform.localPosition.y));
         }
     }
 }
