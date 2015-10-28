@@ -10,13 +10,11 @@ public class PlayerAim : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
-<<<<<<< HEAD
 	float aimAngle = 0;
-=======
-	public float aimAngle = 0;
+
     public float joysensitivityX = 3F;
     public float joysensitivityY = 3F;
->>>>>>> origin/master
+
 
     public float minimumX = -360F;
     public float maximumX = 360F;
@@ -40,8 +38,8 @@ public class PlayerAim : MonoBehaviour {
 
 	void UpdateKeyboardAiming(){
 
-        float joyY = Mathf.Abs(Input.GetAxis("joystickRX"));
-        float joyX = Mathf.Abs(Input.GetAxis("joystickRY"));
+		float joyY = 0;// Mathf.Abs(Input.GetAxis("joystickRX"));
+		float joyX = 0;//Mathf.Abs(Input.GetAxis("joystickRY"));
 
 		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
