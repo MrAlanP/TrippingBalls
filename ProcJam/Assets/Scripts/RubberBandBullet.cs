@@ -9,13 +9,13 @@ public class RubberBandBullet : MonoBehaviour {
 	Animator animator;
 	public SpriteRenderer spriteRenderer;
 
-	enum BandState{
+	public enum BandState{
 		Disabled,
 		Projectile,
 		Pickup
 	}
 
-	BandState bandState = BandState.Disabled;
+	public BandState bandState = BandState.Disabled;
 	// Use this for initialization
 	void Awake () {
 		body = gameObject.GetComponent<Rigidbody2D> ();
@@ -46,6 +46,10 @@ public class RubberBandBullet : MonoBehaviour {
 		switch (bandState) {
 		case BandState.Projectile:{
 			animator.SetTrigger ("EndScaling");
+			Enemy enemy = col.collider.gameObject.GetComponent<Enemy>();
+			if(enemy!=null){
+				enemy.Hit();
+			}
 			ChangeToPickup();
 			break;
 		}

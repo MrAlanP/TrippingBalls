@@ -140,13 +140,13 @@
      <Compile Include="Assets\Imported\Standard Assets\Utility\TimedObjectDestructor.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\PlayerAim.cs" />
      <Compile Include="Assets\Scripts\PlayerHUD.cs" />
      <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
-     <Compile Include="Assets\Scripts\enemy1.cs" />
      <None Include="Assets\Imported\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Imported\Demigiant\DOTween\readme.txt" />
