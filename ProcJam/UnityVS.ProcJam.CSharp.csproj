@@ -169,6 +169,7 @@
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\PlayerAim.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween.XML" />

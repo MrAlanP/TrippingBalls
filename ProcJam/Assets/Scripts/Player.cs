@@ -3,8 +3,11 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	public PlayerAim playerAim;
+
 	Rigidbody2D body;
 	SpriteRenderer spriteRenderer;
+
 
 	float movementSpeed = 4.0f;
 
