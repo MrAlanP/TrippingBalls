@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerAim.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
     <Files>
-      <File FileName="Assets\Scripts\Player.cs" Line="52" Column="1" />
-      <File FileName="Assets\Scripts\PlayerAim.cs" Line="34" Column="72" />
+      <File FileName="Assets\Scripts\Player.cs" Line="99" Column="18" />
+      <File FileName="Assets\Scripts\PlayerAim.cs" Line="39" Column="81" />
+      <File FileName="Assets\Scripts\RubberBandBullet.cs" Line="39" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

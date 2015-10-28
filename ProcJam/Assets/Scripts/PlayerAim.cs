@@ -10,7 +10,7 @@ public class PlayerAim : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
-	float angle = 0;
+	public float aimAngle = 0;
 
 
 	// Use this for initialization
@@ -33,31 +33,16 @@ public class PlayerAim : MonoBehaviour {
 		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
 
-		angle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
+		aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
 
-		Vector2 aimPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
+		Vector2 aimPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
-
-		 
-        if (Input.GetButtonDown("Fire1")) 
-        {
-			Shoot();
-		}
-
 	}
 
 	public bool GetIsAiming(){
 		return isAiming;
 	}
 
-	void Shoot(){
-		GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
-		Vector2 spawnPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * 0.1f;
-		newBand.transform.SetParent (player.projectiles.transform);
-		newBand.transform.localPosition = player.transform.localPosition + new Vector3 (spawnPos.x, spawnPos.y, 0);
-		RubberBandBullet rubberBand = newBand.GetComponent<RubberBandBullet> ();
-		rubberBand.Shoot (angle);
 
-	}
 	
 }

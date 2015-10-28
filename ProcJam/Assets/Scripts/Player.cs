@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
-	
+
+	public PlayerHUD playerHUD;
 	public GameObject projectiles;
+	public PlayerAim playerAim;
 
 	Rigidbody2D body;
 	SpriteRenderer spriteRenderer;
@@ -17,7 +19,7 @@ public class Player : MonoBehaviour {
 	int collisionCount = 0;
 
 
-
+	int rubberBands = 10;
 
 
 	public enum ControlType{
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
+		playerHUD.UpdateRubberBandsCount (rubberBands);
 		body = gameObject.GetComponent<Rigidbody2D> ();
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
@@ -36,6 +39,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateMovement ();
+
+		if (Input.GetButtonDown("Fire1")) 
+		{
+			Shoot();
+		}
 	}
 
 	void UpdateMovement(){
@@ -81,6 +89,23 @@ public class Player : MonoBehaviour {
 		}
 
 	}
+
+	void Shoot(){
+		if (rubberBands>0) {
+			GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
+			Vector2 spawnPos = new Vector2 (Mathf.Cos (playerAim.aimAngle), Mathf.Sin (playerAim.aimAngle)) * 0.1f;
+			newBand.transform.SetParent (projectiles.transform);
+			newBand.transform.localPosition = transform.localPosition + new Vector3 (spawnPos.x, spawnPos.y, 0);
+			RubberBandBullet rubberBand = newBand.GetComponent<RubberBandBullet> ();
+			rubberBand.Shoot (playerAim.aimAngle);
+			rubberBands--;
+			playerHUD.UpdateRubberBandsCount (rubberBands);
+		}
+		
+		
+	}
+
+
 
 
 
