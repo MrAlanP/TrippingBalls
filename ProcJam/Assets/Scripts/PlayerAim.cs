@@ -32,7 +32,6 @@ public class PlayerAim : MonoBehaviour {
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
 
 		float angle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
-		Debug.Log (mousePlayerOffset);
 
 		Vector2 aimPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
