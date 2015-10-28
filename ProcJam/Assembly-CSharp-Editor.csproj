@@ -156,28 +156,28 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="DOTweenEditor">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
  </Reference>
  <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
  </Reference>
  <Reference Include="UnityVS.VersionSpecific">
- <HintPath>D:/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+ <HintPath>D:/TrippingBalls2/ProcJam/Assets/Imported/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
