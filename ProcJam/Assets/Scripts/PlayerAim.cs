@@ -10,6 +10,8 @@ public class PlayerAim : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
+	float angle = 0;
+
 
 	// Use this for initialization
 	void Awake () {
@@ -28,18 +30,31 @@ public class PlayerAim : MonoBehaviour {
 	void UpdateKeyboardAiming(){
 
 
-		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);// new Vector2(Input.mousePosition.x - Screen.width/2, Input.mousePosition.y - Screen.height/2);
+		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
 
-		float angle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
+		angle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
 
 		Vector2 aimPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
+
+		if (Input.GetMouseButtonDown (0)) {
+			Shoot();
+		}
 
 	}
 
 	public bool GetIsAiming(){
 		return isAiming;
+	}
+
+	void Shoot(){
+		GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
+		Vector2 spawnPos = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * 0.1f;
+		newBand.transform.localPosition = player.transform.localPosition + new Vector3 (spawnPos.x, spawnPos.y, 0);
+		RubberBandBullet rubberBand = newBand.GetComponent<RubberBandBullet> ();
+		rubberBand.Shoot (angle);
+
 	}
 	
 }

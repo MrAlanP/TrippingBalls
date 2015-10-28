@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-
-	public PlayerAim playerAim;
+	
+	public GameObject projectiles;
 
 	Rigidbody2D body;
 	SpriteRenderer spriteRenderer;
