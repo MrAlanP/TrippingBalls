@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class RubberBandBullet : MonoBehaviour {
-
+	
 	float speed = 5.0f;
 	Rigidbody2D body;
 	// Use this for initialization
