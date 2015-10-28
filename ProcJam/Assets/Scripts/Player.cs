@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
 
 	int collisionCount = 0;
 
+   
 
 	int rubberBands = 10;
 
