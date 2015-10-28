@@ -18,9 +18,9 @@ public class Player : MonoBehaviour {
 
 	int collisionCount = 0;
 
-   
+   	
+	List<GameObject> rubberBands = new List<GameObject>();
 
-	int rubberBands = 10;
 
 
 	public enum ControlType{
@@ -32,7 +32,12 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-		playerHUD.UpdateRubberBandsCount (rubberBands);
+
+		for (int i = 0; i<10; i++) {
+			SpawnRubberBand();
+		}
+
+
 		body = gameObject.GetComponent<Rigidbody2D> ();
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
@@ -92,18 +97,35 @@ public class Player : MonoBehaviour {
 	}
 
 	void Shoot(){
-		if (rubberBands>0) {
-			GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
-			Vector2 spawnPos = new Vector2 (Mathf.Cos (playerAim.aimAngle), Mathf.Sin (playerAim.aimAngle)) * 0.1f;
-			newBand.transform.SetParent (projectiles.transform);
-			newBand.transform.localPosition = transform.localPosition + new Vector3 (spawnPos.x, spawnPos.y, 0);
-			RubberBandBullet rubberBand = newBand.GetComponent<RubberBandBullet> ();
-			rubberBand.Shoot (playerAim.aimAngle);
-			rubberBands--;
-			playerHUD.UpdateRubberBandsCount (rubberBands);
+
+		if (rubberBands.Count>0) {
+			float aimAngle = playerAim.GetAngle();
+			Vector2 spawnPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle)) * 0.1f;
+			rubberBands[rubberBands.Count-1].transform.localPosition = new Vector3 (spawnPos.x, spawnPos.y, 0);
+			rubberBands[rubberBands.Count-1].transform.SetParent (projectiles.transform);
+			RubberBandBullet rubberBand = rubberBands[rubberBands.Count-1].GetComponent<RubberBandBullet> ();
+			rubberBand.Shoot (aimAngle);
+
+			rubberBands.RemoveAt(rubberBands.Count-1);
+			playerHUD.UpdateRubberBandsCount (rubberBands.Count);
 		}
 		
 		
+	}
+
+	void SpawnRubberBand(){
+		GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
+
+		newBand.GetComponent<RubberBandBullet> ().Disable ();
+		AddRubberBandAmmo (newBand);
+	}
+
+	public void AddRubberBandAmmo(GameObject rubberBand){
+		rubberBand.tag = "PlayerRubberBand";
+		rubberBand.gameObject.layer = LayerMask.NameToLayer("PlayerRubberBand");
+		rubberBand.transform.SetParent (transform);
+		rubberBands.Add (rubberBand);
+		playerHUD.UpdateRubberBandsCount (rubberBands.Count);
 	}
 
 

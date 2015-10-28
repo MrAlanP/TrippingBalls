@@ -10,7 +10,7 @@ public class PlayerAim : MonoBehaviour {
 
 	SpriteRenderer spriteRenderer;
 
-	public float aimAngle = 0;
+	float aimAngle = 0;
 
 
 	// Use this for initialization
@@ -37,6 +37,10 @@ public class PlayerAim : MonoBehaviour {
 
 		Vector2 aimPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
+	}
+
+	public float GetAngle(){
+		return aimAngle;
 	}
 
 	public bool GetIsAiming(){
