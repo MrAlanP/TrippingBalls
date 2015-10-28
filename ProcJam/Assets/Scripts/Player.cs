@@ -14,6 +14,15 @@ public class Player : MonoBehaviour {
 	bool onGround = false;
 
 	int collisionCount = 0;
+
+
+	public enum ControlType{
+		Keyboard,
+		Controller
+	}
+
+	public ControlType controlType = ControlType.Keyboard;
+
 	// Use this for initialization
 	void Awake () {
 		body = gameObject.GetComponent<Rigidbody2D> ();
@@ -39,10 +48,8 @@ public class Player : MonoBehaviour {
 				horizontalMovement = 1;
 			}
 
-
-			float xScale = horizontalMovement;
 			body.velocity = new Vector2 (horizontalMovement * movementSpeed, body.velocity.y) * Time.deltaTime * 60;
-			gameObject.transform.localScale = new Vector3(xScale, 1, 1);
+
 		} 
 		else {
 			body.velocity = new Vector2(0, body.velocity.y);
