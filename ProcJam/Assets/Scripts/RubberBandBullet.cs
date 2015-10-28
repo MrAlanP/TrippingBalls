@@ -16,6 +16,8 @@ public class RubberBandBullet : MonoBehaviour {
 	}
 
 	public BandState bandState = BandState.Disabled;
+
+	float currentStateTime = 0;
 	// Use this for initialization
 	void Awake () {
 		body = gameObject.GetComponent<Rigidbody2D> ();
@@ -27,8 +29,24 @@ public class RubberBandBullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (bandState == BandState.Projectile) {
+		currentStateTime += Time.deltaTime;
+
+		switch (bandState) {
+		case BandState.Projectile:{
 			transform.localEulerAngles = new Vector3(0,0,Mathf.Rad2Deg*Mathf.Atan2 (body.velocity.y, body.velocity.x));
+			break;
+		}
+		case BandState.Pickup:{
+			if(!body.isKinematic){
+				if(currentStateTime>1f){
+					if(body.velocity == Vector2.zero){
+						body.isKinematic = true;
+					}
+				}
+			}
+
+			break;
+		}
 		}
 
 
@@ -36,6 +54,7 @@ public class RubberBandBullet : MonoBehaviour {
 
 	public void Shoot(float angle){
 		Enable ();
+		currentStateTime = 0;
 		animator.SetTrigger ("StartScaling");
 		body.isKinematic = false;
 		bandState = BandState.Projectile;
@@ -65,6 +84,7 @@ public class RubberBandBullet : MonoBehaviour {
 
 
 	void ChangeToPickup(){
+		currentStateTime = 0;
 		bandState = BandState.Pickup;
 		tag = "RubberBand";
 		gameObject.layer = LayerMask.NameToLayer("RubberBand");
