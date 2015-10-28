@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
 	float movementSpeed = 4.0f;
 
 	bool onGround = false;
+
+	int collisionCount = 0;
 	// Use this for initialization
 	void Awake () {
 		body = gameObject.GetComponent<Rigidbody2D> ();
@@ -58,14 +60,15 @@ public class Player : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		onGround = true;
-
-		float angle = col.gameObject.transform.localEulerAngles.z;
-
-		gameObject.transform.localEulerAngles = new Vector3 (0, 0, angle);
+		collisionCount++;
 	}
 
 	void OnCollisionExit2D(Collision2D col){
-		onGround = false;
+		collisionCount--;
+		if (collisionCount == 0) {
+			onGround = false;
+		}
+
 	}
 
 
