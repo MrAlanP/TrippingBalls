@@ -30,13 +30,11 @@ public class PlayerAim : MonoBehaviour {
 			break;
 		}
 
-
-		UpdateGamepadAiming ();
 	}
 
 	void UpdateKeyboardAiming(){
 
-
+		spriteRenderer.enabled = true;
 
 		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
@@ -72,6 +70,11 @@ public class PlayerAim : MonoBehaviour {
 
 
 	}
+
+	public void SetSpriteRendererActive(bool active){
+		spriteRenderer.enabled = active;
+	}
+
 
 	void SetAimPos(float angle){
 		Vector2 aimPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle));
