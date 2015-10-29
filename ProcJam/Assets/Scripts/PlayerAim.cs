@@ -57,7 +57,7 @@ public class PlayerAim : MonoBehaviour {
 
 		spriteRenderer.enabled = !(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f);
 		if (spriteRenderer.enabled) {
-			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
+			aimAngle = Mathf.Atan2 (-joyRY, joyRX);
 			SetAimPos (aimAngle);
 		}
 
