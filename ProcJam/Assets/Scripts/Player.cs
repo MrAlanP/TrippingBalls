@@ -57,7 +57,6 @@ public class Player : MonoBehaviour {
 			}
 		}
 		UpdateMovement ();
-		UpdateFiring ();
 	}
 	
 
@@ -137,11 +136,6 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void UpdateFiring(){
-
-
-		
-	}
 
 
 	public void Shoot(float power){

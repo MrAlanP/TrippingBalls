@@ -1,25 +1,13 @@
 fileFormatVersion: 2
-guid: 2bac1ebf14f0adb49b76e98fe38c6cbd
-timeCreated: 1446149233
+guid: f20379ef37c88c54c9658688f5281f11
+timeCreated: 1446149602
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: p1_spritesheet_0
-    21300002: p1_spritesheet_1
-    21300004: p1_spritesheet_2
-    21300006: p1_spritesheet_3
-    21300008: p1_spritesheet_4
-    21300010: p1_spritesheet_5
-    21300012: p1_spritesheet_6
-    21300014: p1_spritesheet_7
-    21300016: p1_spritesheet_8
-    21300018: p1_spritesheet_9
-    21300020: p1_spritesheet_10
-    21300022: p1_spritesheet_11
-    21300024: p1_spritesheet_12
-    21300026: p1_spritesheet_13
-    21300028: p1_spritesheet_14
-    21300030: p1_spritesheet_15
+    21300000: player_helmet_spritesheet_0
+    21300002: player_helmet_spritesheet_1
+    21300004: player_helmet_spritesheet_2
+    21300006: player_helmet_spritesheet_3
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -65,43 +53,43 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: p1_spritesheet_0
+    - name: player_helmet_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 8
-        width: 59
-        height: 84
+        x: 1
+        y: 0
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: p1_spritesheet_1
+    - name: player_helmet_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 73
-        y: 8
-        width: 70
-        height: 84
+        x: 68
+        y: 0
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: p1_spritesheet_2
+    - name: player_helmet_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 146
-        y: 6
-        width: 70
-        height: 86
+        x: 135
+        y: 0
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: p1_spritesheet_3
+    - name: player_helmet_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 219
-        y: 5
-        width: 70
-        height: 87
+        x: 202
+        y: 0
+        width: 65
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
