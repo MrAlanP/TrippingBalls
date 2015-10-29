@@ -11,6 +11,7 @@ public class PlayerAim : MonoBehaviour {
 	SpriteRenderer spriteRenderer;
 
 	float aimAngle = 0;
+
 	
 
 	// Use this for initialization
@@ -50,11 +51,25 @@ public class PlayerAim : MonoBehaviour {
 		float joyRY = Input.GetAxis("JoystickRY");
 		float joyRX = Input.GetAxis("JoystickRX");
 
+		float prevAimAngle = aimAngle;
+		bool prevAimingEnabled = spriteRenderer.enabled;
+
 
 		spriteRenderer.enabled = !(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f);
-		
-		aimAngle = Mathf.Atan2 (joyRY, -joyRX);
-		SetAimPos (aimAngle);
+		if (spriteRenderer.enabled) {
+			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
+			SetAimPos (aimAngle);
+		}
+
+
+
+
+		if (prevAimingEnabled && !spriteRenderer.enabled) {
+			player.Shoot();
+		}
+
+
+
 
 	}
 
