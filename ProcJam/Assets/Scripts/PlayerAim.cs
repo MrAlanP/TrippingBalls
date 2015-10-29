@@ -105,7 +105,7 @@ public class PlayerAim : MonoBehaviour {
 
 
 
-		if (prevAimingEnabled && !spriteRenderer.enabled) {
+		if (prevAimingEnabled && !aimingActive) {
 			player.Shoot(shootPower);
 		}
 
