@@ -7,8 +7,10 @@ public class PlayerAim : MonoBehaviour {
 
 	public Player player;
 	public Camera mainCam;
+	public GameObject rubberBand;
 
 	SpriteRenderer spriteRenderer;
+
 
 	float aimAngle = 0;
 
@@ -77,6 +79,7 @@ public class PlayerAim : MonoBehaviour {
 
 
 	void SetAimPos(float angle){
+		rubberBand.transform.localEulerAngles = new Vector3 (0, 0, (Mathf.Rad2Deg*angle)+10);
 		Vector2 aimPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
 	}

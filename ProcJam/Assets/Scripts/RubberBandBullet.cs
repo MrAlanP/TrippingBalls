@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class RubberBandBullet : MonoBehaviour {
-	
+
+	public Color color;
 	float speed = 5.0f;
 	bool isAlive = false;
 	Rigidbody2D body;
@@ -19,12 +20,13 @@ public class RubberBandBullet : MonoBehaviour {
 
 	float currentStateTime = 0;
 	// Use this for initialization
-	void Awake () {
+	public void Initialise () {
 		body = gameObject.GetComponent<Rigidbody2D> ();
 		body.isKinematic = true;
 		animator = gameObject.GetComponent<Animator> ();
 
 		spriteRenderer.color = RubberBandColours.colours [Random.Range (0, RubberBandColours.colours.Length)];
+		color = spriteRenderer.color;
 	}
 	
 	// Update is called once per frame
