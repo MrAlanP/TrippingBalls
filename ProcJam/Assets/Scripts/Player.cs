@@ -14,10 +14,9 @@ public class Player : MonoBehaviour {
 
 	float movementSpeed = 4.0f;
 
-	bool onGround = false;
-
-	int collisionCount = 0;
 	float previousFireAxis = 0;
+
+	bool isGrounded = false;
 
    	
 	List<GameObject> rubberBands = new List<GameObject>();
@@ -53,15 +52,23 @@ public class Player : MonoBehaviour {
 
 		UpdateMovement ();
 		UpdateFiring ();
+	}
+	
 
-
-		//Debug.Log (IsGrounded());
-
+	void FixedUpdate(){
+		isGrounded = false;
 	}
 
-	bool IsGrounded(){
-		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
-		return; 
+	void OnCollisionStay2D(Collision2D col){
+		if (body.velocity.y > 3) {
+			isGrounded = false;
+			return;
+		}
+		foreach (ContactPoint2D contacts in col.contacts) {
+			if(Vector3.Angle(Vector3.up, contacts.normal) < 60){
+				isGrounded = true;
+			}
+		}
 	}
 
 	void UpdateMovement(){
@@ -85,10 +92,10 @@ public class Player : MonoBehaviour {
 			body.velocity = new Vector2(0, body.velocity.y);
 		}
 
-		if (onGround) {
+		if (isGrounded) {
 			if (Input.GetAxis ("Jump") != 0) {
+				//isGrounded = false;
 				body.AddForce(new Vector2(0,250));
-				onGround = false;
 			}
 		}
 
@@ -104,18 +111,6 @@ public class Player : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter2D(Collision2D col){
-		onGround = true;
-		collisionCount++;
-	}
-
-	void OnCollisionExit2D(Collision2D col){
-		collisionCount--;
-		if (collisionCount == 0) {
-			onGround = false;
-		}
-
-	}
 
 	public void Shoot(){
 
