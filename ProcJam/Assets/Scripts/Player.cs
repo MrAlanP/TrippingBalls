@@ -59,23 +59,22 @@ public class Player : MonoBehaviour {
 		isGrounded = false;
 	}
 
-<<<<<<< HEAD
 	void OnCollisionStay2D(Collision2D col){
 		if (body.velocity.y > 3) {
 			isGrounded = false;
 			return;
 		}
 		foreach (ContactPoint2D contacts in col.contacts) {
-			if(Vector3.Angle(Vector3.up, contacts.normal) < 60){
+			if (Vector3.Angle (Vector3.up, contacts.normal) < 60) {
 
 				isGrounded = true;
 			}
 		}
-=======
+	}
+
 	bool IsGrounded(){
 		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
 		return true; 
->>>>>>> origin/master
 	}
 
 	void UpdateMovement(){
