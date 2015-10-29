@@ -36,7 +36,7 @@ public class PlayerAim : MonoBehaviour {
 
 	void UpdateKeyboardAiming(){
 
-		spriteRenderer.enabled = true;
+		SetSpriteRendererActive ();
 
 		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
 		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
@@ -55,7 +55,7 @@ public class PlayerAim : MonoBehaviour {
 		bool prevAimingEnabled = spriteRenderer.enabled;
 
 
-		spriteRenderer.enabled = !(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f);
+		SetSpriteRendererActive(!(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f));
 		if (spriteRenderer.enabled) {
 			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
 			SetAimPos (aimAngle);
@@ -73,8 +73,9 @@ public class PlayerAim : MonoBehaviour {
 
 	}
 
-	public void SetSpriteRendererActive(bool active){
+	public void SetSpriteRendererActive(bool active = true){
 		spriteRenderer.enabled = active;
+		player.rubberBandSprite.enabled = active;
 	}
 
 
