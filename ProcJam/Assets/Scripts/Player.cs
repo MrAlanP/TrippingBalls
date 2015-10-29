@@ -129,7 +129,7 @@ public class Player : MonoBehaviour {
 				body.AddForce(new Vector2(0,250));
 			}
 		}
-		Debug.Log (body.velocity.x);
+
 		anim.SetFloat ("Speed", body.velocity.x);
 
 	}
