@@ -11,6 +11,8 @@ public class Player : MonoBehaviour {
 	Rigidbody2D body;
 	SpriteRenderer spriteRenderer;
 
+	public Animator anim;
+	float moveAnim;
 
 	float movementSpeed = 4.0f;
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour {
 	void Awake () {
 		for (int i = 0; i<10; i++) {
 			SpawnRubberBand();
+			anim = GetComponent<Animator>();
 		}
 
 
@@ -126,7 +129,8 @@ public class Player : MonoBehaviour {
 				body.AddForce(new Vector2(0,250));
 			}
 		}
-
+		Debug.Log (body.velocity.x);
+		anim.SetFloat ("Speed", body.velocity.x);
 
 	}
 
