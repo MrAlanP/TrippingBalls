@@ -17,6 +17,8 @@ public class Player : MonoBehaviour {
 	float previousFireAxis = 0;
 
 	bool isGrounded = false;
+	bool canWalkLeft = true;
+	bool canWalkRight = true;
 
    	
 	List<GameObject> rubberBands = new List<GameObject>();
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 		if (controlType == ControlType.Keyboard) {
 			if(Input.GetJoystickNames()[0]!=""){
 				controlType = ControlType.Controller;
@@ -57,6 +60,8 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate(){
 		isGrounded = false;
+		canWalkLeft = true;
+		canWalkRight = true;
 	}
 
 	void OnCollisionStay2D(Collision2D col){
@@ -68,6 +73,15 @@ public class Player : MonoBehaviour {
 			if (Vector3.Angle (Vector3.up, contacts.normal) < 60) {
 
 				isGrounded = true;
+			}
+			else{
+				if(contacts.point.x<gameObject.transform.localPosition.x){
+					canWalkLeft = false;
+				}
+				else{
+					canWalkRight = false;
+				}
+
 			}
 		}
 	}
@@ -86,12 +100,20 @@ public class Player : MonoBehaviour {
 		if (horizontalMovement != 0) {
 			if(horizontalMovement<0){
 				horizontalMovement = -1;
+				if(!canWalkLeft){
+					horizontalMovement = 0;
+				}
 			}
 			else{
 				horizontalMovement = 1;
+				if(!canWalkRight){
+					horizontalMovement = 0;
+				}
 			}
 
 			body.velocity = new Vector2 (horizontalMovement * movementSpeed, body.velocity.y) * Time.deltaTime * 60;
+
+
 
 		} 
 		else {
