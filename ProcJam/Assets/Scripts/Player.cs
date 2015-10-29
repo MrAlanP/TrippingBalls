@@ -54,7 +54,6 @@ public class Player : MonoBehaviour {
 		if (controlType == ControlType.Keyboard) {
 			if(Input.GetJoystickNames()[0]!=""){
 				controlType = ControlType.Controller;
-				playerAim.SetSpriteRendererActive(false);
 			}
 		}
 		UpdateMovement ();
@@ -145,15 +144,15 @@ public class Player : MonoBehaviour {
 	}
 
 
-	public void Shoot(){
+	public void Shoot(float power){
 
 		if (rubberBands.Count>0) {
 			float aimAngle = playerAim.GetAngle();
 			Vector2 spawnPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle)) * 0.1f;
-			rubberBands[rubberBands.Count-1].transform.localPosition = playerAim.rubberBand.transform.localPosition;//new Vector3 (spawnPos.x, spawnPos.y, 0);
+			rubberBands[rubberBands.Count-1].transform.localPosition = rubberBandSprite.gameObject.transform.localPosition;
 			rubberBands[rubberBands.Count-1].transform.SetParent (projectiles.transform);
 			RubberBandBullet rubberBand = rubberBands[rubberBands.Count-1].GetComponent<RubberBandBullet> ();
-			rubberBand.Shoot (aimAngle);
+			rubberBand.Shoot (aimAngle, power);
 
 			rubberBands.RemoveAt(rubberBands.Count-1);
 			playerHUD.UpdateRubberBandsCount (rubberBands.Count);

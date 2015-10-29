@@ -4,21 +4,29 @@ using System.Collections.Generic;
 
 public class PlayerAim : MonoBehaviour {
 
-	bool isAiming = false;
 
 	public Player player;
 	public Camera mainCam;
 	public GameObject rubberBand;
-	public GameObject TrajectoryPointPrefab;
-	float power = 5.0f;
+	public GameObject trajectory;
+	public GameObject trajectoryPointPrefab;
+
+	float shootPower = 0;
+	const float MAX_SHOOT_POWER = 10;
 
 	SpriteRenderer spriteRenderer;
 
 
 	float aimAngle = 0;
+	bool aimingActive = false;
+	float aimingActiveTime = 0;
 
-	private int numOfTrajectoryPoints = 30;
-	private List<GameObject> trajectoryPoints;
+	float powerUpTime = 0.5f;
+
+
+
+	List<GameObject> trajectoryPoints;
+	int numOfTrajectoryPoints = 30;
 	
 
 	// Use this for initialization
@@ -29,9 +37,9 @@ public class PlayerAim : MonoBehaviour {
 
 		for (int i=0; i < numOfTrajectoryPoints; i++) {
 
-			GameObject dot = (GameObject) Instantiate (TrajectoryPointPrefab);
-			dot.GetComponent<Renderer>().enabled = false;
-			trajectoryPoints.Insert(i,dot);
+			GameObject dot = (GameObject) Instantiate (trajectoryPointPrefab);
+			dot.transform.SetParent(trajectory.transform);
+			trajectoryPoints.Add(dot);
 
 
 		}
@@ -55,7 +63,7 @@ public class PlayerAim : MonoBehaviour {
 
 
 		if (Input.GetButton ("Fire1")) {
-			SetSpriteRendererActive ();
+			SetAimingActive ();
 			
 			Vector2 mousePos = mainCam.ScreenToWorldPoint (Input.mousePosition);
 			Vector2 mousePlayerOffset = mousePos - new Vector2 (player.transform.localPosition.x, player.transform.localPosition.y);
@@ -66,20 +74,17 @@ public class PlayerAim : MonoBehaviour {
 
 		} 
 		else {
-			if(spriteRenderer.enabled){
-				player.Shoot();
+			if(aimingActive){
+				player.Shoot(shootPower);
 			}
-			SetSpriteRendererActive(false);
+			SetAimingActive(false);
 		}
 
-			Vector3 vel = GetForceFrom(rubberBand.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition));
-			float angle = Mathf.Atan2(vel.y,vel.x)* Mathf.Rad2Deg;
-			transform.eulerAngles = new Vector3(0,0,angle);
-			setTrajectoryPoints(transform.position, vel/rubberBand.GetComponent<Rigidbody2D>().mass);
+		//Vector3 vel = GetForceFrom(rubberBand.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition));
+		//float angle = Mathf.Atan2(vel.y,vel.x)* Mathf.Rad2Deg;
+		//transform.eulerAngles = new Vector3(0,0,angle);
+		//setTrajectoryPoints(transform.position, vel/rubberBand.GetComponent<Rigidbody2D>().mass);
 
-
-
-        //aimAngle = Mathf.Atan2(joyY*joysensitivityY, joyX*joysensitivityX);
 
 	}
 
@@ -88,11 +93,11 @@ public class PlayerAim : MonoBehaviour {
 		float joyRX = Input.GetAxis("JoystickRX");
 
 		float prevAimAngle = aimAngle;
-		bool prevAimingEnabled = spriteRenderer.enabled;
+		bool prevAimingEnabled = aimingActive;
 
 
-		SetSpriteRendererActive(!(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f));
-		if (spriteRenderer.enabled) {
+		SetAimingActive(!(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f));
+		if (aimingActive) {
 			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
 			SetAimPos (aimAngle);
 		}
@@ -101,7 +106,7 @@ public class PlayerAim : MonoBehaviour {
 
 
 		if (prevAimingEnabled && !spriteRenderer.enabled) {
-			player.Shoot();
+			player.Shoot(shootPower);
 		}
 
 
@@ -109,50 +114,60 @@ public class PlayerAim : MonoBehaviour {
 
 	}
 
-	public void SetSpriteRendererActive(bool active = true){
-		spriteRenderer.enabled = active;
+	public void SetAimingActive(bool active = true){
 		player.rubberBandSprite.enabled = active;
+		trajectory.SetActive (active);
+		aimingActive = active;
+
+		if (!active) {
+			aimingActiveTime = 0;
+		}
 	}
 
 
 	void SetAimPos(float angle){
+		aimingActiveTime += Time.deltaTime;
+
+		//Set shot power based on time aiming has been down for
+		shootPower = Mathf.Lerp (MAX_SHOOT_POWER*0.5f, MAX_SHOOT_POWER, aimingActiveTime / powerUpTime);
+
+		//Set rubberband scale and rotation
 		rubberBand.transform.localEulerAngles = new Vector3 (0, 0, (Mathf.Rad2Deg*angle)+10);
+		rubberBand.transform.localScale = new Vector3 (Mathf.Lerp (0.5f,1.2f, aimingActiveTime / powerUpTime), 1, 1);
+
 		Vector2 aimPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle));
 		gameObject.transform.localPosition = new Vector3 (aimPos.x, aimPos.y, 0)*0.8f;
+
+		setTrajectoryPoints (rubberBand.gameObject.transform.position, new Vector3 (aimPos.x, aimPos.y, 0) * shootPower);
+
 	}
 
 	public float GetAngle(){
 		return aimAngle;
 	}
 
-	public bool GetIsAiming(){
-		return isAiming;
-	}
-
-	private Vector2 GetForceFrom(Vector3 fromPos, Vector3 toPos){
-
-		return (new Vector2 (toPos.x, toPos.y) - new Vector2 (fromPos.x, fromPos.y)) * power;
-
-	}
-
-	void setTrajectoryPoints(Vector3 pStartPosition , Vector3 pVelocity )
+	void setTrajectoryPoints(Vector3 pStartPosition , Vector3 pVelocity)
 	{
 		float velocity = Mathf.Sqrt((pVelocity.x * pVelocity.x) + (pVelocity.y * pVelocity.y));
 		float angle = Mathf.Rad2Deg*(Mathf.Atan2(pVelocity.y , pVelocity.x));
 		float fTime = 0;
-		fTime += 0.1f;
+		fTime += 0.05f;
 		for (int i = 0 ; i < numOfTrajectoryPoints ; i++)
 		{
 			float dx = velocity * fTime * Mathf.Cos(angle * Mathf.Deg2Rad);
 			float dy = velocity * fTime * Mathf.Sin(angle * Mathf.Deg2Rad) - (Physics2D.gravity.magnitude * fTime * fTime / 2.0f);
 			Vector3 pos = new Vector3(pStartPosition.x + dx , pStartPosition.y + dy ,2);
 			trajectoryPoints[i].transform.position = pos;
-			trajectoryPoints[i].GetComponent<Renderer>().enabled = true;
+
 			trajectoryPoints[i].transform.eulerAngles = new Vector3(0,0,Mathf.Atan2(pVelocity.y - (Physics.gravity.magnitude)*fTime,pVelocity.x)*Mathf.Rad2Deg);
-			fTime += 0.1f;
+			fTime += 0.06f;
 		}
 	}
+}
+
+
+
 
 
 	
-}
+
