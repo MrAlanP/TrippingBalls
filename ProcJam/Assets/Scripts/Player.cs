@@ -6,10 +6,11 @@ public class Player : MonoBehaviour {
 
 	public PlayerHUD playerHUD;
 	public GameObject projectiles;
+	public GameObject playerSprite;
+	public SpriteRenderer rubberBandSprite;
 	public PlayerAim playerAim;
 
 	Rigidbody2D body;
-	SpriteRenderer spriteRenderer;
 
 	public Animator anim;
 	float moveAnim;
@@ -38,12 +39,13 @@ public class Player : MonoBehaviour {
 	void Awake () {
 		for (int i = 0; i<10; i++) {
 			SpawnRubberBand();
-			anim = GetComponent<Animator>();
 		}
+		UpdateRubberBandColour ();
+
 
 
 		body = gameObject.GetComponent<Rigidbody2D> ();
-		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
+
 	}
 	
 	// Update is called once per frame
@@ -53,7 +55,6 @@ public class Player : MonoBehaviour {
 			if(Input.GetJoystickNames()[0]!=""){
 				controlType = ControlType.Controller;
 				playerAim.SetSpriteRendererActive(false);
-                Debug.Log(Input.GetJoystickNames()[0]);
 			}
 		}
 		UpdateMovement ();
@@ -101,8 +102,10 @@ public class Player : MonoBehaviour {
 		
 
 		if (horizontalMovement != 0) {
+			float xScale = 1;
 			if(horizontalMovement<0){
 				horizontalMovement = -1;
+				xScale = -1;
 				if(!canWalkLeft){
 					horizontalMovement = 0;
 				}
@@ -114,6 +117,7 @@ public class Player : MonoBehaviour {
 				}
 			}
 
+			playerSprite.transform.localScale = new Vector3(xScale,1,1);
 			body.velocity = new Vector2 (horizontalMovement * movementSpeed, body.velocity.y) * Time.deltaTime * 60;
 
 
@@ -130,7 +134,7 @@ public class Player : MonoBehaviour {
 			}
 		}
 
-		anim.SetFloat ("Speed", body.velocity.x);
+		anim.SetFloat ("Speed",  Mathf.Abs(body.velocity.x));
 
 	}
 
@@ -149,13 +153,14 @@ public class Player : MonoBehaviour {
 		if (rubberBands.Count>0) {
 			float aimAngle = playerAim.GetAngle();
 			Vector2 spawnPos = new Vector2 (Mathf.Cos (aimAngle), Mathf.Sin (aimAngle)) * 0.1f;
-			rubberBands[rubberBands.Count-1].transform.localPosition = new Vector3 (spawnPos.x, spawnPos.y, 0);
+			rubberBands[rubberBands.Count-1].transform.localPosition = playerAim.rubberBand.transform.localPosition;//new Vector3 (spawnPos.x, spawnPos.y, 0);
 			rubberBands[rubberBands.Count-1].transform.SetParent (projectiles.transform);
 			RubberBandBullet rubberBand = rubberBands[rubberBands.Count-1].GetComponent<RubberBandBullet> ();
 			rubberBand.Shoot (aimAngle);
 
 			rubberBands.RemoveAt(rubberBands.Count-1);
 			playerHUD.UpdateRubberBandsCount (rubberBands.Count);
+			UpdateRubberBandColour ();
 		}
 		
 		
@@ -163,9 +168,14 @@ public class Player : MonoBehaviour {
 
 	void SpawnRubberBand(){
 		GameObject newBand = Instantiate(Resources.Load<GameObject>("Prefabs/RubberBand"));
-
-		newBand.GetComponent<RubberBandBullet> ().Disable ();
+		RubberBandBullet rb = newBand.GetComponent<RubberBandBullet> ();
+		rb.Initialise ();
+		rb.Disable ();
 		AddRubberBandAmmo (newBand);
+	}
+
+	void UpdateRubberBandColour(){
+		rubberBandSprite.color = rubberBands [rubberBands.Count-1].GetComponent<RubberBandBullet> ().color;
 	}
 
 	public void AddRubberBandAmmo(GameObject rubberBand){
