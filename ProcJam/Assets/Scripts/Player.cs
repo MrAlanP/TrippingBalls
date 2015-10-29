@@ -44,15 +44,18 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (controlType == ControlType.Keyboard) {
+			if(Input.GetJoystickNames()[0]!=""){
+				controlType = ControlType.Controller;
+				playerAim.SetSpriteRendererActive(false);
+			}
+		}
+
 		UpdateMovement ();
 		UpdateFiring ();
 
 
-		if (controlType == ControlType.Keyboard) {
-			if(Input.GetJoystickNames().Length>0){
-				controlType = ControlType.Controller;
-			}
-		}
+
 
 	}
 
