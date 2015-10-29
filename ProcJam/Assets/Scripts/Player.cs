@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 	bool onGround = false;
 
 	int collisionCount = 0;
+	float previousFireAxis = 0;
 
    	
 	List<GameObject> rubberBands = new List<GameObject>();
@@ -45,11 +46,15 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateMovement ();
+		UpdateFiring ();
 
-		if (Input.GetButtonDown("Fire1")) 
-		{
-			Shoot();
+
+		if (controlType == ControlType.Keyboard) {
+			if(Input.GetJoystickNames().Length>0){
+				controlType = ControlType.Controller;
+			}
 		}
+
 	}
 
 	void UpdateMovement(){
@@ -83,6 +88,15 @@ public class Player : MonoBehaviour {
 
 	}
 
+	void UpdateFiring(){
+
+		if (Input.GetButtonDown("Fire1"))
+		{
+			Shoot();
+		}
+		
+	}
+
 	void OnCollisionEnter2D(Collision2D col){
 		onGround = true;
 		collisionCount++;
@@ -96,7 +110,7 @@ public class Player : MonoBehaviour {
 
 	}
 
-	void Shoot(){
+	public void Shoot(){
 
 		if (rubberBands.Count>0) {
 			float aimAngle = playerAim.GetAngle();
