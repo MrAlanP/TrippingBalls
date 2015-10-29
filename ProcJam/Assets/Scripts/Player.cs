@@ -48,6 +48,7 @@ public class Player : MonoBehaviour {
 			if(Input.GetJoystickNames()[0]!=""){
 				controlType = ControlType.Controller;
 				playerAim.SetSpriteRendererActive(false);
+                Debug.Log(Input.GetJoystickNames()[0]);
 			}
 		}
 
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour {
 
 	bool IsGrounded(){
 		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
-		return; 
+		return true; 
 	}
 
 	void UpdateMovement(){
