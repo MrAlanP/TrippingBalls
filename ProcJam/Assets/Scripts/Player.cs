@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
 			if(Input.GetJoystickNames()[0]!=""){
 				controlType = ControlType.Controller;
 				playerAim.SetSpriteRendererActive(false);
+                Debug.Log(Input.GetJoystickNames()[0]);
 			}
 		}
 		UpdateMovement ();
@@ -58,6 +59,7 @@ public class Player : MonoBehaviour {
 		isGrounded = false;
 	}
 
+<<<<<<< HEAD
 	void OnCollisionStay2D(Collision2D col){
 		if (body.velocity.y > 3) {
 			isGrounded = false;
@@ -69,6 +71,11 @@ public class Player : MonoBehaviour {
 				isGrounded = true;
 			}
 		}
+=======
+	bool IsGrounded(){
+		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
+		return true; 
+>>>>>>> origin/master
 	}
 
 	void UpdateMovement(){
