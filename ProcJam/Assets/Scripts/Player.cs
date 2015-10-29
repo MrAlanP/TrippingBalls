@@ -55,8 +55,13 @@ public class Player : MonoBehaviour {
 		UpdateFiring ();
 
 
+		//Debug.Log (IsGrounded());
 
+	}
 
+	bool IsGrounded(){
+		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
+		return; 
 	}
 
 	void UpdateMovement(){
