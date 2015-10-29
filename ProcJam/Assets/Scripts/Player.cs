@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
 				playerAim.SetSpriteRendererActive(false);
 			}
 		}
-
 		UpdateMovement ();
 		UpdateFiring ();
 	}
@@ -66,6 +65,7 @@ public class Player : MonoBehaviour {
 		}
 		foreach (ContactPoint2D contacts in col.contacts) {
 			if(Vector3.Angle(Vector3.up, contacts.normal) < 60){
+
 				isGrounded = true;
 			}
 		}
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour {
 
 		if (isGrounded) {
 			if (Input.GetAxis ("Jump") != 0) {
-				//isGrounded = false;
+				isGrounded = false;
 				body.AddForce(new Vector2(0,250));
 			}
 		}
