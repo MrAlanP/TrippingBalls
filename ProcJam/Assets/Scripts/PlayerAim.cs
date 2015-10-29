@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerAim : MonoBehaviour {
 
 	bool isAiming = false;
-
-	public Player player;
+  	public Player player;
 	public Camera mainCam;
 	public GameObject rubberBand;
-
-	SpriteRenderer spriteRenderer;
+   	SpriteRenderer spriteRenderer;
 
 
 	float aimAngle = 0;
@@ -19,10 +18,12 @@ public class PlayerAim : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
+        
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+    {
 		switch (player.controlType) {
 		case Player.ControlType.Keyboard:
 			UpdateKeyboardAiming();
@@ -33,54 +34,64 @@ public class PlayerAim : MonoBehaviour {
 		}
 
 	}
+    
 
 	void UpdateKeyboardAiming(){
+        if (player.rubberBands.Count>0)
+        {
+            if (Input.GetButton("Fire1"))
+            {
+                SetSpriteRendererActive();
+
+                Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
+
+                aimAngle = Mathf.Atan2(mousePlayerOffset.y, mousePlayerOffset.x);
+                SetAimPos(aimAngle);
+            }
+            else
+            {
+                if (spriteRenderer.enabled)
+                {
+                    player.Shoot();
+                }
+                SetSpriteRendererActive(false);
+            }
 
 
-		if (Input.GetButton ("Fire1")) {
-			SetSpriteRendererActive ();
-			
-			Vector2 mousePos = mainCam.ScreenToWorldPoint (Input.mousePosition);
-			Vector2 mousePlayerOffset = mousePos - new Vector2 (player.transform.localPosition.x, player.transform.localPosition.y);
-			
-			aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
-			SetAimPos (aimAngle);
-		} 
-		else {
-			if(spriteRenderer.enabled){
-				player.Shoot();
-			}
-			SetSpriteRendererActive(false);
-		}
-
-
-        //aimAngle = Mathf.Atan2(joyY*joysensitivityY, joyX*joysensitivityX);
-
+          
+        }
 	}
 
 	void UpdateGamepadAiming(){
-		float joyRY = Input.GetAxis("JoystickRY");
-		float joyRX = Input.GetAxis("JoystickRX");
 
-		float prevAimAngle = aimAngle;
-		bool prevAimingEnabled = spriteRenderer.enabled;
+        if (player.rubberBands.Count>0)
+        {
 
+            float joyRY = Input.GetAxis("JoystickRY");
+            float joyRX = Input.GetAxis("JoystickRX");
 
-		SetSpriteRendererActive(!(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f));
-		if (spriteRenderer.enabled) {
-			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
-			SetAimPos (aimAngle);
-		}
+            float prevAimAngle = aimAngle;
+            bool prevAimingEnabled = spriteRenderer.enabled;
 
 
-
-
-		if (prevAimingEnabled && !spriteRenderer.enabled) {
-			player.Shoot();
-		}
+            SetSpriteRendererActive(!(Mathf.Abs(joyRX) < 0.3f && Mathf.Abs(joyRY) < 0.3f));
+            if (spriteRenderer.enabled)
+            {
+                aimAngle = Mathf.Atan2(joyRY, -joyRX);
+                SetAimPos(aimAngle);
+            }
 
 
 
+
+            if (prevAimingEnabled && !spriteRenderer.enabled)
+            {
+                player.Shoot();
+            }
+
+
+        }
 
 	}
 
