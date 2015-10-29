@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 	bool canWalkRight = true;
 
    	
-	List<GameObject> rubberBands = new List<GameObject>();
+	public List<GameObject> rubberBands = new List<GameObject>();
 
 
 
