@@ -33,7 +33,6 @@ public class Player : MonoBehaviour {
 
 	// Use this for initialization
 	void Awake () {
-
 		for (int i = 0; i<10; i++) {
 			SpawnRubberBand();
 		}
