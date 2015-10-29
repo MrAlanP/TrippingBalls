@@ -54,14 +54,14 @@ public class RubberBandBullet : MonoBehaviour {
 
 	}
 
-	public void Shoot(float angle){
+	public void Shoot(float angle, float power){
 		Enable ();
 		currentStateTime = 0;
 		animator.SetTrigger ("StartScaling");
 		body.isKinematic = false;
 		bandState = BandState.Projectile;
 		transform.localEulerAngles = new Vector3 (0, 0, Mathf.Rad2Deg*angle);
-		body.velocity = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * 10.0f;
+		body.velocity = new Vector2 (Mathf.Cos (angle), Mathf.Sin (angle)) * power;
 	}
 	void OnCollisionEnter2D(Collision2D col){
 		switch (bandState) {
