@@ -52,9 +52,12 @@ public class Player : MonoBehaviour {
 	void Update () {
 
 		if (controlType == ControlType.Keyboard) {
-			if(Input.GetJoystickNames()[0]!=""){
-				controlType = ControlType.Controller;
+			if(Input.GetJoystickNames().Length>0){
+				if(Input.GetJoystickNames()[0]!=""){
+					controlType = ControlType.Controller;
+				}
 			}
+
 		}
 		UpdateMovement ();
 	}
