@@ -36,13 +36,24 @@ public class PlayerAim : MonoBehaviour {
 
 	void UpdateKeyboardAiming(){
 
-		SetSpriteRendererActive ();
 
-		Vector2 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-		Vector2 mousePlayerOffset = mousePos - new Vector2(player.transform.localPosition.x, player.transform.localPosition.y);
+		if (Input.GetButton ("Fire1")) {
+			SetSpriteRendererActive ();
+			
+			Vector2 mousePos = mainCam.ScreenToWorldPoint (Input.mousePosition);
+			Vector2 mousePlayerOffset = mousePos - new Vector2 (player.transform.localPosition.x, player.transform.localPosition.y);
+			
+			aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
+			SetAimPos (aimAngle);
+		} 
+		else {
+			if(spriteRenderer.enabled){
+				player.Shoot();
+			}
+			SetSpriteRendererActive(false);
+		}
 
-		aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
-		SetAimPos (aimAngle);
+
         //aimAngle = Mathf.Atan2(joyY*joysensitivityY, joyX*joysensitivityX);
 
 	}

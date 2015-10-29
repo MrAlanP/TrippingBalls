@@ -140,10 +140,7 @@ public class Player : MonoBehaviour {
 
 	void UpdateFiring(){
 
-		if (Input.GetButtonDown("Fire1"))
-		{
-			Shoot();
-		}
+
 		
 	}
 
@@ -175,7 +172,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void UpdateRubberBandColour(){
-		rubberBandSprite.color = rubberBands [rubberBands.Count-1].GetComponent<RubberBandBullet> ().color;
+		if (rubberBands.Count > 0) {
+			rubberBandSprite.color = rubberBands [rubberBands.Count-1].GetComponent<RubberBandBullet> ().color;
+		}
+
 	}
 
 	public void AddRubberBandAmmo(GameObject rubberBand){
