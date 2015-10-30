@@ -19,7 +19,6 @@ public class EnemyManager : MonoBehaviour
             if (Random.Range(0,10)<6)
             {
                 enemy.transform.position = gameObject.transform.position;
-               // enemy.transform.SetParent(gameObject.transform);
                 enemyList.Add(enemy);
 
             }
