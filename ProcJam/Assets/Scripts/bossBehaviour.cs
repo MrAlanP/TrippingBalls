@@ -8,23 +8,25 @@ public class bossBehaviour : MonoBehaviour
     ballHealth BallHealth;
     float delay = 0;
     public GameObject ballSack;
-    float force = 50;
+    float force = 850;
+    int choose;
  
     enum attack
     {
         SWING,
         THROW,
-        JUMP
+        JUMP,
+        NOTHING
     }
     attack Attack;
-    float timer;
+    float coolDown;
     int health;
 
 	// Use this for initialization
 	void Start () 
     {
         BallHealth = gameObject.GetComponentInChildren<ballHealth>();
-        
+        coolDown = 0;
         
         //balls = gameObject.transform.GetChild(0);
         //balls.transform.
@@ -33,9 +35,15 @@ public class bossBehaviour : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+       
         onDeath();
-
-        int choose = Random.Range(0, 2);
+        coolDown += Time.deltaTime;
+        if (coolDown>=3.0f)
+        {
+            choose = Random.Range(0, 2);
+            coolDown = 0;
+        }
+         
        attackSelect(choose);
             switch (Attack)
         {
@@ -64,24 +72,27 @@ public class bossBehaviour : MonoBehaviour
             if (player.transform.localPosition.x > gameObject.transform.localPosition.x)
             {
                 gameObject.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(new Vector2(force, 0));
-               
             }
+
             else
             {
                 gameObject.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0));
-               
-            }
+            }  
+            
             
 
         }
-        if (Vector3.Distance(ballSack.transform.localPosition, gameObject.transform.localPosition)>=5)
+        if (Vector3.Distance(ballSack.transform.localPosition, gameObject.transform.localPosition) >= 4.5f)
         {
-            
-           // ballSack.GetComponent<SpringJoint2D>().frequency = 0.5f;
             ballSack.GetComponent<SpringJoint2D>().enabled = true;
-            
         }
+        
+        choose = 4;
     }
+
+
+
+
        void onDeath()
     {
         if (BallHealth.health <= 0)
@@ -96,6 +107,9 @@ public class bossBehaviour : MonoBehaviour
             }
         }
     }
+
+
+
        void attackSelect(int choice)
        {
            if (choice == 0)
@@ -110,7 +124,14 @@ public class bossBehaviour : MonoBehaviour
            {
                Attack = attack.SWING;
            }
+           else
+           {
+               Attack = attack.NOTHING;
+           }
        }
+
+
+
        void sackJump()
        {
           
@@ -130,11 +151,16 @@ public class bossBehaviour : MonoBehaviour
             bool jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-2.0f), -Vector2.up, rayLength);
            if (jump)
            {
-               gameObject.transform.Translate(new Vector3 (player.transform.localPosition.x,0,0)*Time.deltaTime);
+
                Debug.Log("jumping");
-               gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(0,850),new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+               gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(0,3150),new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
                jump = false;
+               if (gameObject.transform.localPosition.y >= 80)
+               {
+                   gameObject.transform.Translate(player.transform.localPosition.x, 100, 0);
+               }
            }
+           choose = 4;
        }
 }
 /*

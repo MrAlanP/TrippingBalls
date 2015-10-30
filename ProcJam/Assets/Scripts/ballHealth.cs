@@ -31,5 +31,12 @@ public class ballHealth : MonoBehaviour {
         {
             health -= 1;
         }
+        if (ouch.collider.tag == "Player")
+        {
+            if (!GetComponent<SpringJoint2D>().enabled)
+            {
+                GetComponent<SpringJoint2D>().enabled = true;
+            }
+        }
     }
 }
