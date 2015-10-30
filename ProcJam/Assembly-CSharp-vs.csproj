@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EnemyManager.cs" />
      <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
      <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
      <Compile Include="Assets\Imported\JSON\JSONObject.cs" />

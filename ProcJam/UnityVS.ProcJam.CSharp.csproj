@@ -52,6 +52,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -69,6 +72,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EnemyManager.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Imported\JSON\JSONObject.cs" />

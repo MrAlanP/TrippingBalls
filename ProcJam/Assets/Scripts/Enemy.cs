@@ -40,13 +40,13 @@ public class Enemy : MonoBehaviour
 					{
 						if(player.localPosition.x>gameObject.transform.localPosition.x){
 							body.AddForce(new Vector2(5,0));
-                            gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1)* Time.deltaTime * (speed*10));
+                            gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1)* Time.deltaTime * (speed*Mathf.PI));
 						}
 						else{
 							body.AddForce(new Vector2(-5,0));
-                            gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, -1) * Time.deltaTime * (speed*10));
+                            gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, -1) * Time.deltaTime * (speed*Mathf.PI));
 						}
-						//transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+						
 					}
 					
 				}
