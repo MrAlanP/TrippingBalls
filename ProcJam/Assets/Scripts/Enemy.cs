@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
 		//Moving up
 		switch (enemyState) {
 		case EnemyState.Chase:{
-				if (body.velocity.y > 0) {
+				//if (body.velocity.y > 0) {
 					if (Vector3.Distance(player.localPosition, gameObject.transform.localPosition) >= 1f)
 					{
 						if(player.localPosition.x>gameObject.transform.localPosition.x){
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
 						
 					}
 					
-				}
+				//}
 				break;
 			}
 
