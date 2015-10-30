@@ -46,7 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EnemyManager.cs" />
      <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
      <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
      <Compile Include="Assets\Imported\JSON\JSONObject.cs" />
@@ -142,6 +141,7 @@
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
+     <Compile Include="Assets\Scripts\EnemyManager.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\GameCamera.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
@@ -149,6 +149,8 @@
      <Compile Include="Assets\Scripts\PlayerAim.cs" />
      <Compile Include="Assets\Scripts\PlayerHUD.cs" />
      <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
+     <Compile Include="Assets\Scripts\ballHealth.cs" />
+     <Compile Include="Assets\Scripts\bossBehaviour.cs" />
      <None Include="Assets\Imported\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Imported\Demigiant\DOTween\readme.txt" />
