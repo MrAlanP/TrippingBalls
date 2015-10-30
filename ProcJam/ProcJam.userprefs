@@ -1,10 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\DamageTest.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerAim.cs" Line="105" Column="5" />
-      <File FileName="Assets\Scripts\Enemy.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Player.cs" Line="189" Column="2" />
+      <File FileName="Assets\PlayerHealth.cs" Line="29" Column="18" />
+      <File FileName="Assets\DamageTest.cs" Line="39" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
