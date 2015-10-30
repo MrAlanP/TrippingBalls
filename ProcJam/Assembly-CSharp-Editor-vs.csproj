@@ -156,6 +156,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
+<<<<<<< HEAD
  <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
@@ -178,6 +179,30 @@
  </Reference>
  <Reference Include="UnityVS.VersionSpecific">
  <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+=======
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTweenEditor">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+ </Reference>
+ <Reference Include="SyntaxTree.VisualStudio.Unity.Messaging">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/SyntaxTree.VisualStudio.Unity.Messaging.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityVS.VersionSpecific">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/UnityVS/Editor/UnityVS.VersionSpecific.dll</HintPath>
+>>>>>>> origin/master
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>

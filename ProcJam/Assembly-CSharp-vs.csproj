@@ -140,7 +140,10 @@
      <Compile Include="Assets\Imported\Standard Assets\Utility\TimedObjectDestructor.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
+<<<<<<< HEAD
      <Compile Include="Assets\RubberBandCounter.cs" />
+=======
+>>>>>>> origin/master
      <Compile Include="Assets\Scripts\Damage.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
@@ -246,6 +249,7 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
+<<<<<<< HEAD
  <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
@@ -256,6 +260,18 @@
  </Reference>
  <Reference Include="DOTween50">
  <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+=======
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween43">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
+ <Reference Include="DOTween50">
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+>>>>>>> origin/master
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

@@ -70,8 +70,11 @@
   </ItemGroup>
   <ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Assets\DamageTest.cs" />
     <Compile Include="Assets\EnemyManager.cs" />
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
@@ -169,7 +172,11 @@
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Compile Include="Assets\PlayerHealth.cs" />
+=======
+    <Compile Include="Assets\Scripts\Damage.cs" />
+>>>>>>> origin/master
 =======
     <Compile Include="Assets\Scripts\Damage.cs" />
 >>>>>>> origin/master
