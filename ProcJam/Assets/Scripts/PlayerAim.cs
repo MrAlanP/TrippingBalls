@@ -22,6 +22,7 @@ public class PlayerAim : MonoBehaviour {
 	float aimingActiveTime = 0;
 
 	float powerUpTime = 0.5f;
+	float snapTime = 3.0f;
 
 
 
@@ -71,6 +72,12 @@ public class PlayerAim : MonoBehaviour {
 			aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);
 			SetAimPos (aimAngle);
 
+			if (aimingActiveTime>3.0f) {
+				SetAimingActive(false);
+				player.SnapRubberBand();
+				return;
+			}
+
 
 		} 
 		else {
@@ -80,15 +87,14 @@ public class PlayerAim : MonoBehaviour {
 			SetAimingActive(false);
 		}
 
-		//Vector3 vel = GetForceFrom(rubberBand.transform.position,Camera.main.ScreenToWorldPoint(Input.mousePosition));
-		//float angle = Mathf.Atan2(vel.y,vel.x)* Mathf.Rad2Deg;
-		//transform.eulerAngles = new Vector3(0,0,angle);
-		//setTrajectoryPoints(transform.position, vel/rubberBand.GetComponent<Rigidbody2D>().mass);
 
 
 	}
 
 	void UpdateGamepadAiming(){
+
+
+
 		float joyRY = Input.GetAxis("JoystickRY");
 		float joyRX = Input.GetAxis("JoystickRX");
 
@@ -103,7 +109,11 @@ public class PlayerAim : MonoBehaviour {
 		}
 
 
-
+		if (aimingActiveTime>3.0f) {
+			SetAimingActive(false);
+			player.SnapRubberBand();
+			return;
+		}
 
 		if (prevAimingEnabled && !aimingActive) {
 			player.Shoot(shootPower);
