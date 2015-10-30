@@ -186,6 +186,7 @@ public class Player : MonoBehaviour {
 
 	public void SnapRubberBand(){
 		GameObject rubberBand = rubberBands [rubberBands.Count - 1];
+		rubberBandSnapParticles.startColor = rubberBand.GetComponent<RubberBandBullet> ().color;
 		rubberBandSnapParticles.Emit (2);
 		rubberBands.Remove (rubberBand);
 		playerHUD.UpdateRubberBandsCount (rubberBands.Count);
