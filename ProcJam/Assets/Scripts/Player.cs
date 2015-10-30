@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
 	public SpriteRenderer rubberBandSprite;
 	public ParticleSystem rubberBandSnapParticles;
 	public PlayerAim playerAim;
+	public AudioSource fire;
+	public AudioSource jump;
+	public AudioSource rubberBandPickup;
 
 	Rigidbody2D body;
 
@@ -133,6 +136,7 @@ public class Player : MonoBehaviour {
 			if (Input.GetAxis ("Jump") != 0) {
 				isGrounded = false;
 				body.AddForce(new Vector2(0,250));
+				jump.Play();
 			}
 		}
 
@@ -151,6 +155,8 @@ public class Player : MonoBehaviour {
 			rubberBands[rubberBands.Count-1].transform.SetParent (projectiles.transform);
 			RubberBandBullet rubberBand = rubberBands[rubberBands.Count-1].GetComponent<RubberBandBullet> ();
 			rubberBand.Shoot (aimAngle, power);
+
+			fire.Play();
 
 			rubberBands.RemoveAt(rubberBands.Count-1);
 			playerHUD.UpdateRubberBandsCount (rubberBands.Count);
@@ -180,6 +186,9 @@ public class Player : MonoBehaviour {
 		rubberBand.gameObject.layer = LayerMask.NameToLayer("PlayerRubberBand");
 		rubberBand.transform.SetParent (transform);
 		rubberBands.Add (rubberBand);
+
+		rubberBandPickup.Play ();
+
 		playerHUD.UpdateRubberBandsCount (rubberBands.Count);
 	}
 

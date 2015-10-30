@@ -10,6 +10,7 @@ public class RubberBandBullet : MonoBehaviour {
 	Animator animator;
 	public SpriteRenderer spriteRenderer;
 
+
 	public enum BandState{
 		Disabled,
 		Projectile,
@@ -98,6 +99,7 @@ public class RubberBandBullet : MonoBehaviour {
 		Disable ();
 		bandState = BandState.Disabled;
 		player.AddRubberBandAmmo (gameObject);
+
 	}
 
 	void Enable(){
