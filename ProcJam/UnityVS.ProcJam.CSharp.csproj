@@ -69,8 +69,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Assets\DamageTest.cs" />
     <Compile Include="Assets\EnemyManager.cs" />
+=======
+>>>>>>> origin/master
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Imported\JSON\JSONObject.cs" />
@@ -165,15 +168,23 @@
     <Compile Include="Assets\Imported\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
+<<<<<<< HEAD
     <Compile Include="Assets\PlayerHealth.cs" />
+=======
+    <Compile Include="Assets\Scripts\Damage.cs" />
+>>>>>>> origin/master
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAim.cs" />
     <Compile Include="Assets\Scripts\PlayerHUD.cs" />
+    <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
+    <Compile Include="Assets\Scripts\ballHealth.cs" />
+    <Compile Include="Assets\Scripts\bossBehaviour.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween.XML" />
