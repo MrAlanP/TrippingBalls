@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
 	public PlayerHUD playerHUD;
+	public RubberBandCounter rubberBandCounter;
 	public GameObject projectiles;
 	public GameObject playerSprite;
 	public SpriteRenderer rubberBandSprite;
@@ -154,6 +155,7 @@ public class Player : MonoBehaviour {
 
 			rubberBands.RemoveAt(rubberBands.Count-1);
 			playerHUD.UpdateRubberBandsCount (rubberBands.Count);
+			rubberBandCounter.UpdateRubberBandsCount (rubberBands.Count);
 			UpdateRubberBandColour ();
 		}
 		
@@ -181,6 +183,7 @@ public class Player : MonoBehaviour {
 		rubberBand.transform.SetParent (transform);
 		rubberBands.Add (rubberBand);
 		playerHUD.UpdateRubberBandsCount (rubberBands.Count);
+		rubberBandCounter.UpdateRubberBandsCount (rubberBands.Count);
 	}
 
 
@@ -190,6 +193,7 @@ public class Player : MonoBehaviour {
 		rubberBandSnapParticles.Emit (2);
 		rubberBands.Remove (rubberBand);
 		playerHUD.UpdateRubberBandsCount (rubberBands.Count);
+		rubberBandCounter.UpdateRubberBandsCount (rubberBands.Count);
 		UpdateRubberBandColour ();
 
 	}

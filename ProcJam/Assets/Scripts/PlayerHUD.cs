@@ -25,7 +25,7 @@ public class PlayerHUD : MonoBehaviour {
 	}
 
 	public void UpdateRubberBandsCount(int count){
-		rubberBandsCount.text = count.ToString();
+//		rubberBandsCount.text = count.ToString();
        
 
 

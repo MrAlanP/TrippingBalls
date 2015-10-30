@@ -36,27 +36,45 @@ public class RubberBandCounter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		rubberBandsCount = playerScript.rubberBands.Count;
+
+		//rubberBandsCount = playerScript.rubberBands.Count;
 
 		//Debug.Log ("PREVIOUS RUBBERBANDS: " + prevRubberBandsCount);
 		//Debug.Log ("CURRENT RUBBERBANDS: " + rubberBandsCount);
 
-		if(prevRubberBandsCount > rubberBandsCount){ //if theres less than there was
-
-			for(int i = 0; i < 10 - (rubberBandsCount); i++){ 
-				Debug.Log(rubberBandsCount);
-				rubberBands[i].SetActive(false);
-			}
-		}
-		else if (prevRubberBandsCount < rubberBandsCount){ //if theres more than there was
-
-			for(int i = 0; i < rubberBandsCount; i++){
-				
-				rubberBands[i].SetActive(true);
-			}
+		for(int i = 0; i < 10; i++)
+		{
+			rubberBands[i].SetActive(false);
 		}
 
-		prevRubberBandsCount = rubberBandsCount;
+		for(int i = 0; i < rubberBandsCount; i++)
+		{
+			rubberBands[i].SetActive(true);
+		}
+
+
+//		if(prevRubberBandsCount > rubberBandsCount){ //if theres less than there was
+//
+//			for(int i = 0; i < 10 - rubberBandsCount ; i++){ 
+//				//Debug.Log(rubberBandsCount);
+//				rubberBands[i].SetActive(false);
+//			}
+//		}
+//		else if (prevRubberBandsCount < rubberBandsCount){ //if theres more than there was
+//
+//			for(int i = 0; i < rubberBandsCount; i++){
+//				
+//				rubberBands[i].SetActive(true);
+//			}
+//		}
+//
+//		prevRubberBandsCount = rubberBandsCount;
 	
+	}
+
+	public void UpdateRubberBandsCount(int count){
+
+		rubberBandsCount = count;
+
 	}
 }
