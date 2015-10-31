@@ -10,7 +10,7 @@ public class EnemyManager : MonoBehaviour
    int spawnAmount;
    float timer = 0;
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         enemyList = new List<GameObject>();
         spawnAmount = Random.Range(1, 8);

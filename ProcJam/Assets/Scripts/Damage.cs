@@ -17,10 +17,7 @@ public class Damage : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		
 		if (other.gameObject == player) {
-			
-			Debug.Log("PLAYER HIT");	
 			playerHealth.takeDamage(attackDamage);
-			
 		}
 	}
 	

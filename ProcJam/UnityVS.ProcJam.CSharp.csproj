@@ -69,14 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Compile Include="Assets\DamageTest.cs" />
-    <Compile Include="Assets\EnemyManager.cs" />
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Imported\JSON\JSONObject.cs" />
@@ -171,15 +163,8 @@
     <Compile Include="Assets\Imported\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Compile Include="Assets\PlayerHealth.cs" />
-=======
+    <Compile Include="Assets\RubberBandCounter.cs" />
     <Compile Include="Assets\Scripts\Damage.cs" />
->>>>>>> origin/master
-=======
-    <Compile Include="Assets\Scripts\Damage.cs" />
->>>>>>> origin/master
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
