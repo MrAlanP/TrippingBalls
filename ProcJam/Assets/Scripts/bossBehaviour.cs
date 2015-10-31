@@ -1,24 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+public enum attack
+{
+    SWING,
+    THROW,
+    JUMP,
+    POUND,
+    NOTHING
+}
 public class bossBehaviour : MonoBehaviour 
 {
     public GameObject player;
+    public GameObject ballsDropped;
     public GameObject explode;
+    public GameObject sackThrow;
     ballHealth BallHealth;
     float delay = 0;
-    public GameObject ballSack;
-    float force = 850;
+    GameObject ballSack;
+    float force = 650;
     int choose;
- 
-    enum attack
-    {
-        SWING,
-        THROW,
-        JUMP,
-        NOTHING
-    }
-    attack Attack;
+    bool jump;
+   
+    public attack Attack;
+    
     float coolDown;
     int health;
 
@@ -27,9 +31,8 @@ public class bossBehaviour : MonoBehaviour
     {
         BallHealth = gameObject.GetComponentInChildren<ballHealth>();
         coolDown = 0;
+        ballSack = gameObject.transform.GetChild(0).gameObject;   
         
-        //balls = gameObject.transform.GetChild(0);
-        //balls.transform.
 	}
 	
 	// Update is called once per frame
@@ -38,34 +41,72 @@ public class bossBehaviour : MonoBehaviour
        
         onDeath();
         coolDown += Time.deltaTime;
-        if (coolDown>=3.0f)
+        if (coolDown >= 5.0f)
         {
-            choose = Random.Range(0, 2);
-            coolDown = 0;
-        }
-         
-       attackSelect(choose);
+            choose = 3;// Random.Range(0, 4);
+             attackSelect(choose);
             switch (Attack)
-        {
+            {
                 case attack.JUMP:
-                {
-                    sackJump();
-                    break;
-                }
+                    {
+                        sackJump();
+                        coolDown = 0;
+                        break;
+                    }
                 case attack.SWING:
-                {
-                    break;
-                }
+                    {
+                        sackLasso();
+                        coolDown = 0;
+                        break;
+                    }
                 case attack.THROW:
-                {
-                    sackThrow();
-                    break;
-                }
+                    {
+                        SackThrow();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.POUND:
+                    {
+                        ballRain();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.NOTHING:
+                    {
+                        coolDown = 0;
+                        break;
+                    }
+            }
         }
     }
-    void sackThrow()
+    void SackThrow()
     {
-       // ballSack.GetComponent<SpringJoint2D>().frequency = 10;
+        jump = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 2.0f), -Vector2.up, 0.1f);
+
+        if (jump)
+        {
+            //GameObject sackThrow = GameObject.FindGameObjectWithTag("enemyBalls");
+            ballSack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
+            ballSack.SetActive(false);
+            Instantiate(sackThrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.2f, 0), ballSack.transform.localRotation);
+
+            float waitForIt = 0;
+            waitForIt += Time.deltaTime;
+            if (waitForIt >= 2)
+            {
+                sackThrow.GetComponent<ballProjectile>().fire = true;
+                waitForIt = 0;
+            }
+            ballSack.SetActive(true);
+
+            ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 0.666f, 1), Time.deltaTime * 100);
+            choose = 4;
+        }
+    }
+
+    void sackLasso()
+    {
+        // ballSack.GetComponent<SpringJoint2D>().frequency = 10;
         ballSack.GetComponent<SpringJoint2D>().enabled = false;
         if (Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition) >= 1f)
         {
@@ -77,20 +118,18 @@ public class bossBehaviour : MonoBehaviour
             else
             {
                 gameObject.transform.GetChild(0).GetComponent<Rigidbody2D>().AddForce(new Vector2(-force, 0));
-            }  
-            
-            
+            }
+
+
 
         }
         if (Vector3.Distance(ballSack.transform.localPosition, gameObject.transform.localPosition) >= 4.5f)
         {
             ballSack.GetComponent<SpringJoint2D>().enabled = true;
         }
-        
+
         choose = 4;
     }
-
-
 
 
        void onDeath()
@@ -124,7 +163,11 @@ public class bossBehaviour : MonoBehaviour
            {
                Attack = attack.SWING;
            }
-           else
+           else if (choice == 3)
+           {
+               Attack = attack.POUND;
+           }
+           else if (choice == 4)
            {
                Attack = attack.NOTHING;
            }
@@ -135,30 +178,39 @@ public class bossBehaviour : MonoBehaviour
        void sackJump()
        {
           
-           float playerDir = player.transform.localPosition.x;
-          
-
-          //if (player.transform.localPosition.x > gameObject.transform.localPosition.x)
-          //{
-          //    playerDir = 10;
-          //}
-          //else
-          //{
-          //    playerDir = -10;
-          //}
-            
+           //float playerDir = player.transform.localPosition.x;
            float rayLength = 0.1f;
-            bool jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-2.0f), -Vector2.up, rayLength);
+           jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-2.0f), -Vector2.up, rayLength);
            if (jump)
            {
-
-               Debug.Log("jumping");
-               gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(0,3150),new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
-               jump = false;
-               if (gameObject.transform.localPosition.y >= 80)
+               if (Vector3.Distance(gameObject.transform.localPosition, player.transform.localPosition) >= 1)
                {
-                   gameObject.transform.Translate(player.transform.localPosition.x, 100, 0);
+                   if (gameObject.transform.localPosition.x < player.transform.localPosition.x)
+                   {
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2500), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+                   }
+                   // gameObject.transform.Translate(Vector3.Lerp(gameObject.transform.localPosition, new Vector3(player.transform.position.x, 20, gameObject.transform.localPosition.z), 25 ));//* Time.deltaTime));
+                   else
+                   {
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2500), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+                   }
                }
+               jump = false;
+               if (gameObject.transform.localPosition.y >=3)
+               {
+                  gameObject.transform.Translate(player.transform.localPosition.x, gameObject.transform.localPosition.y, 0,Space.World);
+               }
+           }
+           choose = 4;
+       }
+    void ballRain()
+       {
+
+           float randX = player.transform.localPosition.x;// Random.Range(-6.22f, 16.46f);
+           for (int i = 0; i < 3; i++)
+           {
+               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 14, 0);
+               randX -= 4.5f;
            }
            choose = 4;
        }
@@ -170,7 +222,7 @@ things to do
  * 
  * ATTACKS:
  *  
- *  sack jump (boss jumps and falls sack down on roughly the player)
+ *  
  *  sack swing (huge sack swings across the environment)
  * 
 

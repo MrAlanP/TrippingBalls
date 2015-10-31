@@ -5,7 +5,7 @@ using System.Collections;
 public class PlayerHealth : MonoBehaviour {
 
 	const int START_HEALTH = 3;
-	int currentHealth;
+	public int currentHealth;
 	public Slider healthSlider;
 
 	public SpriteRenderer helmetSprite;

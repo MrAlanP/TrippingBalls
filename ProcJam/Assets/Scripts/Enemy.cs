@@ -42,7 +42,8 @@ public class Enemy : MonoBehaviour
 							body.AddForce(new Vector2(5,0));
                             gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1)* Time.deltaTime * (speed*Mathf.PI));
 						}
-						else{
+						else
+                        {
 							body.AddForce(new Vector2(-5,0));
                             gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, -1) * Time.deltaTime * (speed*Mathf.PI));
 						}

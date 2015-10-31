@@ -33,6 +33,7 @@ public class RubberBandBullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		currentStateTime += Time.deltaTime;
+        
 
 		switch (bandState) {
 		case BandState.Projectile:{
