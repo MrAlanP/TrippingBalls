@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
 	void OnCollisionStay2D(Collision2D col){
 
 
-		if (body.velocity.y > 0.1f) {
+		if (body.velocity.y > 3f) {
 			isGrounded = false;
 			return;
 		}
@@ -122,7 +122,9 @@ public class Player : MonoBehaviour {
 			}
 
 			playerSprite.transform.localScale = new Vector3(xScale,1,1);
-			body.velocity = new Vector2(0,body.velocity.y) + (new Vector2 (horizontalMovement * movementSpeed, 0) * Time.deltaTime * 60);
+
+			float xVel = horizontalMovement * movementSpeed * Time.deltaTime * 60;
+			body.velocity = new Vector2(xVel,body.velocity.y);
 
 
 
