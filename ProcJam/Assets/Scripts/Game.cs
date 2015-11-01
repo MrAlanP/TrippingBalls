@@ -6,7 +6,6 @@ public class Game : MonoBehaviour {
 	bool isPaused = false;
 	public AudioSource mainMusic;
 	public float musicVol = 100;
-	public Slider MusicVol;
 
 	// Use this for initialization
 	void Awake () {

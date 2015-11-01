@@ -15,7 +15,6 @@ public class Boss : MonoBehaviour
     public GameObject explode;
     public GameObject sackThrow;
 	public BossBalls bossBalls;
-	public GameObject arena;
 
     float delay = 0;
     GameObject ballSack;
@@ -56,24 +55,38 @@ public class Boss : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
             choose = Random.Range(0, 4);
             attackSelect(choose);
-			coolDown = 0;
             switch (Attack)
             {
                 case attack.JUMP:
+                    {
                         sackJump();
+                        coolDown = 0;
                         break;
+                    }
                 case attack.SWING:
+                    {
                         sackLasso();
+                        coolDown = 0;
                         break;
+                    }
                 case attack.THROW:
+                    {
                         SackThrow();
+                        coolDown = 0;
                         break;
+                    }
                 case attack.POUND:
+                    {
                         ballRain();
+                        coolDown = 0;
                         break;
+                    }
                 case attack.NOTHING:
+                    {
                         enemyMove();
+                        coolDown = 0;
                         break;
+                    }
             }
             
         }
@@ -87,18 +100,18 @@ public class Boss : MonoBehaviour
         {
             ballSack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             ballSack.SetActive(false);
-			Instantiate(sackThrow, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1.2f, 0), ballSack.transform.localRotation);
+            Instantiate(sackThrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.2f, 0), ballSack.transform.localRotation);
 
             float waitForIt = 0;
             waitForIt += Time.deltaTime;
             if (waitForIt >= 2)
             {
-                sackThrow.GetComponent<BallProjectile>().fire = true;
+                //sackThrow.GetComponent<ballProjectile>().fire = true;
                 waitForIt = 0;
             }
             ballSack.SetActive(true);
 
-            ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 0.666f, 1), Time.deltaTime * 100);
+            ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 100);
             choose = 4;
 
 			bossBalls.Hide();
@@ -187,12 +200,12 @@ public class Boss : MonoBehaviour
                {
                    if (gameObject.transform.localPosition.x < player.transform.localPosition.x)
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2500), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2000), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
                    }
                    // gameObject.transform.Translate(Vector3.Lerp(gameObject.transform.localPosition, new Vector3(player.transform.position.x, 20, gameObject.transform.localPosition.z), 25 ));//* Time.deltaTime));
                    else
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2500), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2000), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
                    }
                }
                jump = false;
@@ -204,20 +217,18 @@ public class Boss : MonoBehaviour
            choose = 4;
        }
     void ballRain()
-   	{
-                
-       float randX = Random.Range(-1.22f, 7f);
-       for (int i = 0; i < 3; i++)
        {
-			GameObject ball = Instantiate(ballsDropped);
-			ball.transform.SetParent(arena.transform);
-           	ball.transform.localPosition = new Vector3(randX, 7, 0);
-           	randX += 4.5f;
+                    
+           float randX = player.transform.localPosition.x;// Random.Range(-6.22f, 16.46f);
+           for (int i = 0; i < 3; i++)
+           {
+               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 8, 0);
+               randX -= 4.5f;
+           }
+           
+           choose = 4;
+           
        }
-       
-       choose = 4;
-       
-   	}
     void enemyMove()
     {
         if (Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition) >= 1f)
