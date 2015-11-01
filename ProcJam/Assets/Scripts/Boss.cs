@@ -23,7 +23,7 @@ public class Boss : MonoBehaviour
     bool jump;
 
 	bool isAlive = true;
-
+	bool isActive = false;
    
     public attack Attack;
     
@@ -42,7 +42,7 @@ public class Boss : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
-       	if (!isAlive) {
+       	if (!isAlive || !isActive) {
 			return;
 		}
 
@@ -106,7 +106,7 @@ public class Boss : MonoBehaviour
             waitForIt += Time.deltaTime;
             if (waitForIt >= 2)
             {
-                sackThrow.GetComponent<ballProjectile>().fire = true;
+                //sackThrow.GetComponent<ballProjectile>().fire = true;
                 waitForIt = 0;
             }
             ballSack.SetActive(true);
@@ -144,6 +144,10 @@ public class Boss : MonoBehaviour
 
         choose = 4;
     }
+
+	public void Activate(){
+		isActive = true;
+	}
 
 
     public void Kill()

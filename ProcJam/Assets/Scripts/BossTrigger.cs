@@ -3,13 +3,12 @@ using System.Collections;
 
 public class BossTrigger : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	public Boss boss;
+
+	void OnTriggerEnter2D(Collider2D col){
+
+		if (col.gameObject.GetComponent<Player> ()) {
+			boss.Activate();
+		}
 	}
 }
