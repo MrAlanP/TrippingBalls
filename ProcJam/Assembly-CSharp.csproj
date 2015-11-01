@@ -141,6 +141,7 @@
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
      <Compile Include="Assets\RubberBandCounter.cs" />
+     <Compile Include="Assets\Scripts\BallProjectile.cs" />
      <Compile Include="Assets\Scripts\Boss.cs" />
      <Compile Include="Assets\Scripts\BossBalls.cs" />
      <Compile Include="Assets\Scripts\BossTrigger.cs" />
