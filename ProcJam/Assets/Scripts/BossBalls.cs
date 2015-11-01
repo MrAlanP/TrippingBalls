@@ -8,6 +8,7 @@ public class BossBalls : MonoBehaviour {
 	public bool isAlive = true;
 	[HideInInspector]
 	public bool isVisible = true;
+	public AudioSource bossHurt;
 
 	public Boss boss;
 
@@ -36,6 +37,7 @@ public class BossBalls : MonoBehaviour {
 
 	public void Hurt(){
 		if(isAlive){
+			bossHurt.Play ();
 			health--;
 		
 			if(health<=0){
