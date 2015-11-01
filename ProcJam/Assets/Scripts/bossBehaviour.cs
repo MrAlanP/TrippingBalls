@@ -17,7 +17,7 @@ public class bossBehaviour : MonoBehaviour
     ballHealth BallHealth;
     float delay = 0;
     GameObject ballSack;
-    float force = 650;
+    float force = 350;
     int choose;
     bool jump;
    
@@ -39,11 +39,13 @@ public class bossBehaviour : MonoBehaviour
 	void Update () 
     {
        
+      
         onDeath();
         coolDown += Time.deltaTime;
         if (coolDown >= 5.0f)
         {
-            choose = 3;// Random.Range(0, 4);
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            choose =  Random.Range(0, 4);
              attackSelect(choose);
             switch (Attack)
             {
@@ -73,6 +75,7 @@ public class bossBehaviour : MonoBehaviour
                     }
                 case attack.NOTHING:
                     {
+                        enemyMove();
                         coolDown = 0;
                         break;
                     }
@@ -123,7 +126,7 @@ public class bossBehaviour : MonoBehaviour
 
 
         }
-        if (Vector3.Distance(ballSack.transform.localPosition, gameObject.transform.localPosition) >= 4.5f)
+        if (Vector3.Distance(ballSack.transform.localPosition, gameObject.transform.localPosition) >= 3.5f)
         {
             ballSack.GetComponent<SpringJoint2D>().enabled = true;
         }
@@ -205,15 +208,34 @@ public class bossBehaviour : MonoBehaviour
        }
     void ballRain()
        {
-
+                    
            float randX = player.transform.localPosition.x;// Random.Range(-6.22f, 16.46f);
            for (int i = 0; i < 3; i++)
            {
                Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 14, 0);
                randX -= 4.5f;
            }
+           
            choose = 4;
+           
        }
+    void enemyMove()
+    {
+        if (Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition) >= 1f)
+        {
+            if (player.transform.localPosition.x > gameObject.transform.localPosition.x)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(25, 0));
+                
+            }
+            else
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-25, 0));
+                
+            }
+
+        }
+    }
 }
 /*
 things to do
