@@ -40,46 +40,53 @@ public class bossBehaviour : MonoBehaviour
     {
        
       
-        onDeath();
-        coolDown += Time.deltaTime;
-        if (coolDown >= 5.0f)
+       
+        if (BallHealth.health > 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            choose =  Random.Range(0, 4);
-             attackSelect(choose);
-            switch (Attack)
+            coolDown += Time.deltaTime;
+            if (coolDown >= 5.0f)
             {
-                case attack.JUMP:
-                    {
-                        sackJump();
-                        coolDown = 0;
-                        break;
-                    }
-                case attack.SWING:
-                    {
-                        sackLasso();
-                        coolDown = 0;
-                        break;
-                    }
-                case attack.THROW:
-                    {
-                        SackThrow();
-                        coolDown = 0;
-                        break;
-                    }
-                case attack.POUND:
-                    {
-                        ballRain();
-                        coolDown = 0;
-                        break;
-                    }
-                case attack.NOTHING:
-                    {
-                        enemyMove();
-                        coolDown = 0;
-                        break;
-                    }
+                gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                choose = Random.Range(0, 4);
+                attackSelect(choose);
+                switch (Attack)
+                {
+                    case attack.JUMP:
+                        {
+                            sackJump();
+                            coolDown = 0;
+                            break;
+                        }
+                    case attack.SWING:
+                        {
+                            sackLasso();
+                            coolDown = 0;
+                            break;
+                        }
+                    case attack.THROW:
+                        {
+                            SackThrow();
+                            coolDown = 0;
+                            break;
+                        }
+                    case attack.POUND:
+                        {
+                            ballRain();
+                            coolDown = 0;
+                            break;
+                        }
+                    case attack.NOTHING:
+                        {
+                            enemyMove();
+                            coolDown = 0;
+                            break;
+                        }
+                }
             }
+        }
+        else
+        {
+            onDeath();
         }
     }
     void SackThrow()
@@ -183,14 +190,14 @@ public class bossBehaviour : MonoBehaviour
           
            //float playerDir = player.transform.localPosition.x;
            float rayLength = 0.1f;
-           jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-2.0f), -Vector2.up, rayLength);
+           jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-1.0f), -Vector2.up, rayLength);
            if (jump)
            {
                if (Vector3.Distance(gameObject.transform.localPosition, player.transform.localPosition) >= 1)
                {
                    if (gameObject.transform.localPosition.x < player.transform.localPosition.x)
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2500), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2500), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
                    }
                    // gameObject.transform.Translate(Vector3.Lerp(gameObject.transform.localPosition, new Vector3(player.transform.position.x, 20, gameObject.transform.localPosition.z), 25 ));//* Time.deltaTime));
                    else
