@@ -38,7 +38,7 @@ public class ballRain : MonoBehaviour {
 				if(player!=null){
 					player.Hurt();
 					doesDamage = false;
-					Destroy(gameObject, 3.0f);
+					Destroy(gameObject);
 				}
 				
 				RubberBandBullet rb = hit.collider.GetComponent<RubberBandBullet>();
