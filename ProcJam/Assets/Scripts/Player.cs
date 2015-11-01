@@ -75,7 +75,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionStay2D(Collision2D col){
-		if (body.velocity.y > 3) {
+
+
+		if (body.velocity.y > 1) {
 			isGrounded = false;
 			return;
 		}
@@ -96,10 +98,6 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-	bool IsGrounded(){
-		Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), -Vector2.up, 0.1f);
-		return true; 
-	}
 
 	void UpdateMovement(){
 

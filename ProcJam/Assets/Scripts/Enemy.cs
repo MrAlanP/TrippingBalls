@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
     Collider2D floor;
     Transform player;
     float playerTransX;
-    float speed;
+    public float speed = 3.5f;
 
 	Rigidbody2D body;
 
@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour
 	void Awake () 
     {
 		body = gameObject.GetComponent<Rigidbody2D> ();
-        speed = 3.50f;
         player = GameObject.FindGameObjectWithTag("Player").transform;
 		enemyState = EnemyState.Chase;
 	}
@@ -39,12 +38,12 @@ public class Enemy : MonoBehaviour
 					if (Vector3.Distance(player.localPosition, gameObject.transform.localPosition) >= 1f)
 					{
 						if(player.localPosition.x>gameObject.transform.localPosition.x){
-							body.AddForce(new Vector2(5,0));
+							body.AddForce(new Vector2(speed,0));
                             gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, 1)* Time.deltaTime * (speed*Mathf.PI));
 						}
 						else
                         {
-							body.AddForce(new Vector2(-5,0));
+							body.AddForce(new Vector2(-speed,0));
                             gameObject.GetComponent<Transform>().Rotate(new Vector3(0, 0, -1) * Time.deltaTime * (speed*Mathf.PI));
 						}
 						

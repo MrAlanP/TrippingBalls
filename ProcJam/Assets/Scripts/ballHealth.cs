@@ -24,7 +24,7 @@ public class ballHealth : MonoBehaviour {
             Instantiate(explode).transform.position = gameObject.transform.position;
             gameObject.SetActive(false);
         }
-        Debug.Log(health);
+
         if (BossScript.Attack == attack.THROW)
         {
             gameObject.GetComponent<SpriteRenderer>().enabled=false;
