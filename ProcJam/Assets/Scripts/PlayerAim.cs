@@ -49,6 +49,11 @@ public class PlayerAim : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (player.rubberBands.Count == 0) {
+			return;
+		}
+
 		switch (player.controlType) {
 		case Player.ControlType.Keyboard:
 			UpdateKeyboardAiming();
