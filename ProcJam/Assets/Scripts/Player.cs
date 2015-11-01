@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class Player : MonoBehaviour {
 
+	PlayerHealth playerHealth;
 	public PlayerHUD playerHUD;
 	public RubberBandCounter rubberBandCounter;
 	public GameObject projectiles;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour {
 		UpdateRubberBandColour ();
 
 
-
+		playerHealth = gameObject.GetComponent<PlayerHealth> ();
 		body = gameObject.GetComponent<Rigidbody2D> ();
 
 	}
@@ -203,6 +204,10 @@ public class Player : MonoBehaviour {
 		rubberBandCounter.UpdateRubberBandsCount (rubberBands.Count);
 		UpdateRubberBandColour ();
 
+	}
+
+	public void Hurt(){
+		playerHealth.takeDamage ();
 	}
 
 

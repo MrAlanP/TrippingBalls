@@ -7,6 +7,8 @@ public class ballProjectile : MonoBehaviour
      GameObject player;
     public bool fire;
     float fireTime;
+
+	bool doesDamage = true;
 	// Use this for initialization
 	void Start () 
     {
@@ -63,20 +65,23 @@ public class ballProjectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D hit)
     {
-		if (hit.collider) {
-			RubberBandBullet rb = hit.collider.GetComponent<RubberBandBullet>();
-			if(rb!=null){
-
+		if (doesDamage) {
+			if (hit.collider) {
+				Player player = hit.collider.GetComponent<Player>();
+				if(player!=null){
+					player.Hurt();
+					doesDamage = false;
+					Destroy(gameObject, 3.0f);
+				}
+				
+				RubberBandBullet rb = hit.collider.GetComponent<RubberBandBullet>();
+				if(rb!=null){
+					Destroy(gameObject);
+					doesDamage = false;
+				}
 			}
 		}
-//        if (hit.collider == GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>())
-//        {
-//           Destroy(gameObject);
-//        }
-//        else if (hit.collider == GameObject.FindGameObjectWithTag("RubberBand").GetComponent<Collider2D>())
-//        {
-//            Destroy(gameObject);
-//        }
+
         
     }
 

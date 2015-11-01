@@ -8,18 +8,22 @@ public enum attack
     POUND,
     NOTHING
 }
-public class bossBehaviour : MonoBehaviour 
+public class Boss : MonoBehaviour 
 {
     public GameObject player;
     public GameObject ballsDropped;
     public GameObject explode;
     public GameObject sackThrow;
-    ballHealth BallHealth;
+	public BossBalls bossBalls;
+
     float delay = 0;
     GameObject ballSack;
     float force = 350;
     int choose;
     bool jump;
+
+	bool isAlive = true;
+
    
     public attack Attack;
     
@@ -27,67 +31,66 @@ public class bossBehaviour : MonoBehaviour
     int health;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
-        BallHealth = gameObject.GetComponentInChildren<ballHealth>();
+
         coolDown = 0;
-        ballSack = gameObject.transform.GetChild(0).gameObject;   
+        ballSack = bossBalls.gameObject;   
         
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-       
-      
-       
-        if (BallHealth.health > 0)
+       	if (!isAlive) {
+			return;
+		}
+
+        coolDown += Time.deltaTime;
+        if (coolDown >= 5.0f)
         {
-            coolDown += Time.deltaTime;
-            if (coolDown >= 5.0f)
+			if(!bossBalls.isVisible){
+				bossBalls.Show();
+			}
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            choose = Random.Range(0, 4);
+            attackSelect(choose);
+            switch (Attack)
             {
-                gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                choose = Random.Range(0, 4);
-                attackSelect(choose);
-                switch (Attack)
-                {
-                    case attack.JUMP:
-                        {
-                            sackJump();
-                            coolDown = 0;
-                            break;
-                        }
-                    case attack.SWING:
-                        {
-                            sackLasso();
-                            coolDown = 0;
-                            break;
-                        }
-                    case attack.THROW:
-                        {
-                            SackThrow();
-                            coolDown = 0;
-                            break;
-                        }
-                    case attack.POUND:
-                        {
-                            ballRain();
-                            coolDown = 0;
-                            break;
-                        }
-                    case attack.NOTHING:
-                        {
-                            enemyMove();
-                            coolDown = 0;
-                            break;
-                        }
-                }
+                case attack.JUMP:
+                    {
+                        sackJump();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.SWING:
+                    {
+                        sackLasso();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.THROW:
+                    {
+                        SackThrow();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.POUND:
+                    {
+                        ballRain();
+                        coolDown = 0;
+                        break;
+                    }
+                case attack.NOTHING:
+                    {
+                        enemyMove();
+                        coolDown = 0;
+                        break;
+                    }
             }
+            
         }
-        else
-        {
-            onDeath();
-        }
+
     }
     void SackThrow()
     {
@@ -95,7 +98,6 @@ public class bossBehaviour : MonoBehaviour
 
         if (jump)
         {
-            //GameObject sackThrow = GameObject.FindGameObjectWithTag("enemyBalls");
             ballSack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             ballSack.SetActive(false);
             Instantiate(sackThrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.2f, 0), ballSack.transform.localRotation);
@@ -111,6 +113,8 @@ public class bossBehaviour : MonoBehaviour
 
             ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 0.666f, 1), Time.deltaTime * 100);
             choose = 4;
+
+			bossBalls.Hide();
         }
     }
 
@@ -142,19 +146,14 @@ public class bossBehaviour : MonoBehaviour
     }
 
 
-       void onDeath()
+    public void Kill()
     {
-        if (BallHealth.health <= 0)
-        {
-            delay += Time.deltaTime;
-            if (delay >= 1)
-            {
-                Instantiate(explode).transform.position = gameObject.transform.localPosition;
-                gameObject.transform.DetachChildren();
-                gameObject.SetActive(false);
 
-            }
-        }
+        Instantiate(explode).transform.position = gameObject.transform.localPosition;
+        gameObject.transform.DetachChildren();
+        gameObject.SetActive(false);
+
+
     }
 
 

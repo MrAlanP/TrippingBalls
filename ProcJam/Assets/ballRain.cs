@@ -6,7 +6,7 @@ public class ballRain : MonoBehaviour {
     public GameObject balls;
     public GameObject boss;
     GameObject player;
-    bossBehaviour BossScript;
+	bool doesDamage = true;
 
 	// Use this for initialization
 	void Start () 
@@ -30,11 +30,23 @@ public class ballRain : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
-  void OnCollisionEnter2D(Collision2D bang)
+  void OnCollisionEnter2D(Collision2D hit)
     {
-      if (bang.collider)
-      {
-         // gameObject.transform.localScale = (Vector3.Lerp(new Vector3(2, 2, 2), new Vector3(0.1f, 0.1f, 0.1f),Time.deltaTime * 100));
-      }
+		if (doesDamage) {
+			if (hit.collider) {
+				Player player = hit.collider.GetComponent<Player>();
+				if(player!=null){
+					player.Hurt();
+					doesDamage = false;
+					Destroy(gameObject, 3.0f);
+				}
+				
+				RubberBandBullet rb = hit.collider.GetComponent<RubberBandBullet>();
+				if(rb!=null){
+					Destroy(gameObject);
+					doesDamage = false;
+				}
+			}
+		}
     }
 }

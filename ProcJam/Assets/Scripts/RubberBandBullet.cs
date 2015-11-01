@@ -69,11 +69,21 @@ public class RubberBandBullet : MonoBehaviour {
 		switch (bandState) {
 		case BandState.Projectile:{
 			animator.SetTrigger ("EndScaling");
+			ChangeToPickup();
+
 			Enemy enemy = col.collider.gameObject.GetComponent<Enemy>();
 			if(enemy!=null){
 				enemy.Hit();
+				break;
 			}
-			ChangeToPickup();
+
+			BossBalls balls = col.collider.gameObject.GetComponent<BossBalls>();
+			if(balls!=null){
+				balls.Hurt();
+			}
+
+
+
 			break;
 		}
 		case BandState.Pickup:{

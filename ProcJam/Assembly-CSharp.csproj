@@ -141,7 +141,9 @@
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointCircuit.cs" />
      <Compile Include="Assets\Imported\Standard Assets\Utility\WaypointProgressTracker.cs" />
      <Compile Include="Assets\RubberBandCounter.cs" />
+     <Compile Include="Assets\Scripts\Boss.cs" />
      <Compile Include="Assets\Scripts\BossBalls.cs" />
+     <Compile Include="Assets\Scripts\BossTrigger.cs" />
      <Compile Include="Assets\Scripts\Damage.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyManager.cs" />
@@ -153,8 +155,6 @@
      <Compile Include="Assets\Scripts\PlayerHUD.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
-     <Compile Include="Assets\Scripts\ballHealth.cs" />
-     <Compile Include="Assets\Scripts\bossBehaviour.cs" />
      <Compile Include="Assets\ballProjectile.cs" />
      <Compile Include="Assets\ballRain.cs" />
      <None Include="Assets\Imported\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
