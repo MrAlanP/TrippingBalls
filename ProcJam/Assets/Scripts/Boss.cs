@@ -111,7 +111,7 @@ public class Boss : MonoBehaviour
             }
             ballSack.SetActive(true);
 
-            ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 0.666f, 1), Time.deltaTime * 100);
+            ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 100);
             choose = 4;
 
 			bossBalls.Hide();
@@ -200,12 +200,12 @@ public class Boss : MonoBehaviour
                {
                    if (gameObject.transform.localPosition.x < player.transform.localPosition.x)
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2500), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2000), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
                    }
                    // gameObject.transform.Translate(Vector3.Lerp(gameObject.transform.localPosition, new Vector3(player.transform.position.x, 20, gameObject.transform.localPosition.z), 25 ));//* Time.deltaTime));
                    else
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2500), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2000), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
                    }
                }
                jump = false;
@@ -222,7 +222,7 @@ public class Boss : MonoBehaviour
            float randX = player.transform.localPosition.x;// Random.Range(-6.22f, 16.46f);
            for (int i = 0; i < 3; i++)
            {
-               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 14, 0);
+               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 8, 0);
                randX -= 4.5f;
            }
            

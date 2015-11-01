@@ -172,6 +172,7 @@
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
+    <Compile Include="Assets\Scripts\LineRendererCode.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAim.cs" />
@@ -179,6 +180,7 @@
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
     <Compile Include="Assets\ballRain.cs" />
+    <Compile Include="Assets\grappleHook.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween.XML" />
