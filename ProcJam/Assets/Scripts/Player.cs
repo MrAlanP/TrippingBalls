@@ -77,7 +77,7 @@ public class Player : MonoBehaviour {
 		canWalkRight = true;
 
 		RaycastHit2D right = Physics2D.Raycast (transform.position + new Vector3(0.1f,0,0), new Vector2 (1, 0), 0.03f);
-		RaycastHit2D left = Physics2D.Raycast (transform.position + new Vector3(0.1f,0,0), new Vector2 (-1, 0), 0.03f);
+		RaycastHit2D left = Physics2D.Raycast (transform.position - new Vector3(0.2f,0,0), new Vector2 (-1, 0), 0.03f);
 		if (right) {
 			if(right.collider.gameObject.tag!="Player"){
 				canWalkRight = false;
@@ -103,15 +103,6 @@ public class Player : MonoBehaviour {
 			if (Vector3.Angle (Vector3.up, contacts.normal) < 60) {
 
 				isGrounded = true;
-			}
-			else{
-				if(contacts.point.x<gameObject.transform.localPosition.x){
-					//canWalkLeft = false;
-				}
-				else{
-					//canWalkRight = false;
-				}
-
 			}
 		}
 	}
