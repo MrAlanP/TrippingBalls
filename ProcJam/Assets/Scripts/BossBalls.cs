@@ -10,6 +10,8 @@ public class BossBalls : MonoBehaviour {
 	public bool isVisible = true;
 	public AudioSource bossHurt;
 
+	public ParticleSystem bloodParticles;
+
 	public Boss boss;
 
 	SpriteRenderer spriteRenderer;
@@ -69,6 +71,7 @@ public class BossBalls : MonoBehaviour {
 				Player player = hit.collider.GetComponent<Player>();
 				if(player!=null){
 					player.Hurt();
+					bloodParticles.Emit(100);
 					doesDamage = false;
 				}
 			}
