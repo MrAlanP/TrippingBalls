@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public float speed = 3.5f;
 
 	Rigidbody2D body;
+	SpriteRenderer spriteRenderer;
 
 	public enum EnemyState{
 		Idle,
@@ -22,12 +23,15 @@ public class Enemy : MonoBehaviour
 		body = gameObject.GetComponent<Rigidbody2D> ();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 		enemyState = EnemyState.Chase;
+		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
     void Update()
     {
-        
+        if (!spriteRenderer.isVisible) {
+			return;
+		}
         //transform.LookAt(player.position);
         //transform.Rotate(new Vector3(0, -90, 0), Space.Self);//correcting the original rotation
 
@@ -35,6 +39,8 @@ public class Enemy : MonoBehaviour
 		switch (enemyState) {
 		case EnemyState.Chase:{
 				//if (body.velocity.y > 0) {
+
+					
 					if (Vector3.Distance(player.localPosition, gameObject.transform.localPosition) >= 1f)
 					{
 						if(player.localPosition.x>gameObject.transform.localPosition.x){
