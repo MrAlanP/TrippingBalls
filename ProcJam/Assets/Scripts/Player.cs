@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
 	public AudioSource fire;
 	public AudioSource jump;
 	public AudioSource rubberBandPickup;
+	public AudioSource hurt;
 
 	Rigidbody2D body;
 
@@ -209,6 +210,7 @@ public class Player : MonoBehaviour {
 
 	public void Hurt(){
 		playerHealth.takeDamage ();
+		hurt.Play ();
 	}
 
 
