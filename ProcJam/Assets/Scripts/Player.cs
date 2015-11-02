@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public RubberBandCounter rubberBandCounter;
 	public GameObject projectiles;
 	public GameObject playerSprite;
+	public PlayerGrapple playerGrapple;
 	public SpriteRenderer rubberBandSprite;
 	public ParticleSystem rubberBandSnapParticles;
 	public PlayerAim playerAim;
@@ -142,6 +143,21 @@ public class Player : MonoBehaviour {
 			}
 		}
 
+
+		if (Input.GetAxis ("Grapple") != 0) {
+			UseGrapple ();
+		} 
+		else {
+			if (playerGrapple.grappleActive) {
+				playerGrapple.DisableGrapple();
+			}
+		}
+
+
+		
+		
+
+
 		anim.SetFloat ("Speed",  Mathf.Abs(body.velocity.x));
 
 	}
@@ -208,9 +224,17 @@ public class Player : MonoBehaviour {
 
 	}
 
+	public void AddForce(Vector3 force){
+		body.AddForce (force);
+	}
+
 	public void Hurt(){
 		playerHealth.takeDamage ();
 		hurt.Play ();
+	}
+
+	public void UseGrapple(){
+		playerGrapple.UseGrapple ();
 	}
 
 
