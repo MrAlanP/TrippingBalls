@@ -77,10 +77,10 @@ public class RubberBandBullet : MonoBehaviour {
 				break;
 			}
 
-			BossBalls balls = col.collider.gameObject.GetComponent<BossBalls>();
-			if(balls!=null){
-				balls.Hurt();
-			}
+//			BossBalls balls = col.collider.gameObject.GetComponent<BossBalls>();
+//			if(balls!=null){
+//				balls.Hurt();
+//			}
 
 
 
