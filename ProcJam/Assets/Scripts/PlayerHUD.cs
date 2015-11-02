@@ -4,13 +4,12 @@ using System.Collections;
 
 
 public class PlayerHUD : MonoBehaviour {
-    public GameObject player;
-	public Text rubberBandsCount;
+	public GameObject bossHealth;
 
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
-      
+		bossHealth.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -29,5 +28,9 @@ public class PlayerHUD : MonoBehaviour {
        
 
 
+	}
+
+	public void ShowBossHealth(){
+		bossHealth.SetActive (true);
 	}
 }
