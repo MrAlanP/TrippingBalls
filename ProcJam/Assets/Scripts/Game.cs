@@ -9,7 +9,7 @@ public class Game : MonoBehaviour {
 
 
 	void Start(){
-		MusicVolume = GlobalAudioController.Instance.MusicVolume;
+		//MusicVolume = GlobalAudioController.Instance.MusicVolume;
 	}
 
 	// Use this for initialization
