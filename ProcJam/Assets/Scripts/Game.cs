@@ -5,7 +5,8 @@ public class Game : MonoBehaviour {
 
 	bool isPaused = false;
 	public AudioSource mainMusic;
-	public float musicVol = 100;
+	public float musicVol = 1;
+
 
 	// Use this for initialization
 	void Awake () {
