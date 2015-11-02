@@ -36,9 +36,21 @@ public class PlayerHealth : MonoBehaviour {
 
 		if (currentHealth <= 0 && !isDead) {
 
-			isDead = true;
+			Death();
 		}
 
+
+	}
+
+	void Death(){
+
+		isDead = true;
+
+		//knock the player over
+		//make him look dead
+		//disable movement
+		//disable shooting
+		//death message
 
 	}
 }
