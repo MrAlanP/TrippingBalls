@@ -74,8 +74,7 @@ public class BossBalls : MonoBehaviour {
 				Player player = hit.collider.GetComponent<Player>();
 				if(player!=null){
 					player.Hurt();
-					bloodParticles.Emit(100);
-                    bloodParticles.Play();
+                    
                     doesDamage = false;
 				}
 			}

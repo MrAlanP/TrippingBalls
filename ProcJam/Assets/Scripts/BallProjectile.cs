@@ -58,7 +58,7 @@ public class BallProjectile : MonoBehaviour
 			//gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(800, 0), direction);
 			//float factor = Time.deltaTime * 1000;
 			//this.transform.Translate(direction.x * factor, 0, 0);
-			Destroy(gameObject, 3.0f);
+			Destroy(gameObject, 1.0f);
 		}
 	}
 	

@@ -30,10 +30,12 @@ public class Boss : MonoBehaviour
     float coolDown;
     int health;
 
+    Rigidbody2D body;
+
 	// Use this for initialization
 	void Awake () 
     {
-
+        body = gameObject.GetComponent<Rigidbody2D>();
         coolDown = 0;
         ballSack = bossBalls.gameObject;   
         
@@ -42,23 +44,28 @@ public class Boss : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
     {
+
+        
        	if (!isAlive || !isActive) {
 			return;
 		}
-
+        //body.AddForce(new Vector2(0, 1000));
+        
         coolDown += Time.deltaTime;
         if (coolDown >= 5.0f)
         {
+            //body.velocity = new Vector2(0, -100);
 			if(!bossBalls.isVisible){
 				bossBalls.Show();
 			}
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            choose = Random.Range(0, 4);
+            choose =  Random.Range(0, 2);
             attackSelect(choose);
             switch (Attack)
             {
                 case attack.JUMP:
                     {
+                        
                         sackJump();
                         coolDown = 0;
                         break;
@@ -115,7 +122,7 @@ public class Boss : MonoBehaviour
             //ballSack.SetActive(true);
             ballSack.GetComponent<BoxCollider2D>().enabled = true;
             ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 100);
-            choose = 4;
+            ///choose = 4;
 
 			bossBalls.Hide();
         }
@@ -145,7 +152,7 @@ public class Boss : MonoBehaviour
             ballSack.GetComponent<SpringJoint2D>().enabled = true;
         }
 
-        choose = 4;
+       // choose = 4;
     }
 
 	public void Activate(){
@@ -159,7 +166,7 @@ public class Boss : MonoBehaviour
         Instantiate(explode).transform.position = gameObject.transform.localPosition;
         gameObject.transform.DetachChildren();
         gameObject.SetActive(false);
-
+        isAlive = false;
 
     }
 
@@ -173,7 +180,8 @@ public class Boss : MonoBehaviour
            }
            else if (choice == 1)
            {
-               Attack = attack.JUMP;
+               Attack = attack.POUND;
+               
            }
            else if (choice == 2)
            {
@@ -181,7 +189,7 @@ public class Boss : MonoBehaviour
            }
            else if (choice == 3)
            {
-               Attack = attack.POUND;
+               Attack = attack.JUMP;
            }
            else if (choice == 4)
            {
@@ -193,22 +201,24 @@ public class Boss : MonoBehaviour
 
        void sackJump()
        {
-          
-           //float playerDir = player.transform.localPosition.x;
            float rayLength = 0.1f;
-           jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-1.0f), -Vector2.up, rayLength);
+           jump = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y - 1.4f), -Vector2.up, rayLength);
            if (jump)
            {
                if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= 1)
                {
                    if (gameObject.transform.position.x < player.transform.position.x)
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2000), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
+
+                       body.AddForce(new Vector2(250, 40000));
+                       //gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(250, 2000));//, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));//AddForce(new Vector2(0, 55));
                    }
                    // gameObject.transform.Translate(Vector3.Lerp(gameObject.transform.localPosition, new Vector3(player.transform.position.x, 20, gameObject.transform.localPosition.z), 25 ));//* Time.deltaTime));
                    else
                    {
-                       gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(-250, 2000), new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
+
+                       body.AddForce(new Vector2(-250, 40000));
+                       // gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250, 2000));//, new Vector2(transform.position.x, transform.position.y));//AddForce(new Vector2(0, 55));
                    }
                }
                jump = false;
@@ -217,7 +227,9 @@ public class Boss : MonoBehaviour
                //   gameObject.transform.Translate(player.transform.localPosition.x, gameObject.transform.localPosition.y, 0,Space.World);
                //}
            }
-           choose = 4;
+         //  choose = 4;
+           //float playerDir = player.transform.localPosition.x;
+          
        }
     void ballRain()
        {
@@ -225,11 +237,11 @@ public class Boss : MonoBehaviour
            float randX = player.transform.localPosition.x;// Random.Range(-6.22f, 16.46f);
            for (int i = 0; i < 3; i++)
            {
-               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 8, 0);
+               Instantiate(ballsDropped).transform.localPosition = new Vector3(randX, 15, 0);
                randX -= 4.5f;
            }
            
-           choose = 4;
+          // choose = 4;
            
        }
     void enemyMove()

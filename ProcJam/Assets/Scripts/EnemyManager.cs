@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
 	void Awake ()
     {
         enemyList = new List<GameObject>();
-        spawnAmount = Random.Range(1, 8);
+        spawnAmount = Random.Range(1, 3);
 	    for (int i =0;i<spawnAmount;i++)
         {
             if (Random.Range(0,10)<6)
@@ -43,7 +43,7 @@ public class EnemyManager : MonoBehaviour
         {
             if (timer > 2.0f)
             {
-                Instantiate(enemyList[i]);
+                Instantiate(enemyList[i],gameObject.transform.position,gameObject.transform.rotation);
                 enemyList.RemoveAt(i);
                 timer = 0;
             }
