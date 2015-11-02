@@ -12,6 +12,7 @@ public class BossTakeDamage : MonoBehaviour {
 				
 		if (coll.gameObject.tag == "Boss") {
 
+
 			BossHealth bossHealth = coll.gameObject.GetComponent<BossHealth>();
 			bossHealth.takeDamage(10);
 
