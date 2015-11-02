@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour {
 
@@ -12,7 +13,11 @@ public class PlayerHealth : MonoBehaviour {
 
 	public Sprite[] helmetDamageSprites;
 
-	bool isDead;
+	public Animator anim;
+
+	public bool isDead;
+
+
 
 
 	// Use this for initialization
@@ -45,6 +50,8 @@ public class PlayerHealth : MonoBehaviour {
 	void Death(){
 
 		isDead = true;
+
+		anim.SetBool ("isDead", true);
 
 		//knock the player over
 		//make him look dead
