@@ -98,10 +98,13 @@ public class Boss : MonoBehaviour
 
         if (jump)
         {
-            ballSack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
-            ballSack.SetActive(false);
-            Instantiate(sackThrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.2f, 0), ballSack.transform.localRotation);
 
+            ballSack.GetComponent<BoxCollider2D>().enabled = false;
+
+            //Instantiate(sackThrow, new Vector3(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y - 1.2f, 0), ballSack.transform.localRotation);
+            Instantiate(sackThrow, new Vector3 (gameObject.transform.position.x,ballSack.transform.position.y,0),gameObject.transform.rotation);
+            //ballSack.SetActive(false);
+            ballSack.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             float waitForIt = 0;
             waitForIt += Time.deltaTime;
             if (waitForIt >= 2)
@@ -109,8 +112,8 @@ public class Boss : MonoBehaviour
                 //sackThrow.GetComponent<ballProjectile>().fire = true;
                 waitForIt = 0;
             }
-            ballSack.SetActive(true);
-
+            //ballSack.SetActive(true);
+            ballSack.GetComponent<BoxCollider2D>().enabled = true;
             ballSack.transform.localScale = Vector3.Lerp(ballSack.transform.localScale, new Vector3(1, 1, 1), Time.deltaTime * 100);
             choose = 4;
 
@@ -245,6 +248,7 @@ public class Boss : MonoBehaviour
             }
 
         }
+       // choose = Random.Range(0, 3);
     }
 }
 /*
