@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
 	
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
-
+	public AudioSource GameMusic;
+	public float MusicVolume;
+	public Slider MusicVolumeSlider;
 
 	GameObject currentMenu; //The current menu we have open
 
@@ -15,6 +18,11 @@ public class MainMenu : MonoBehaviour {
 		Options
 	}
 
+	void Start(){
+		MusicVolume = GlobalAudioController.Instance.MusicVolume;
+		GameMusic.volume = MusicVolumeSlider.value;
+		GameMusic.Play ();
+	}
 
 	//Awake gets called when the class is instantiated
 	void Awake () {
@@ -25,7 +33,7 @@ public class MainMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		MusicVolume = MusicVolumeSlider.value;
 	}
 
 	void SetMenuState(MenuState newState){
@@ -68,5 +76,9 @@ public class MainMenu : MonoBehaviour {
 	//Quit the game
 	public void Quit(){
 		Application.Quit (); //Function won't work in editor mode
+	}
+
+	public void SaveSettings(){
+		GlobalAudioController.Instance.MusicVolume = MusicVolume;
 	}
 }

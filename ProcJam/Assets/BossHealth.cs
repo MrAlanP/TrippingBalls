@@ -26,9 +26,22 @@ public class BossHealth : MonoBehaviour {
 
 		if (currentHealth <= 0 && !isDead) {
 			
-			isDead = true;
+			Death();
 		}
 		
+		
+	}
+
+	
+	void Death(){
+		
+		isDead = true;
+		
+		//knock the boss over
+		//make him look dead
+		//disable movement
+		//disable shooting
+		//victory message
 		
 	}
 }
