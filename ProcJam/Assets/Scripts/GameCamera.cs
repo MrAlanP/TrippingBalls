@@ -11,6 +11,9 @@ public class GameCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		transform.position = new Vector3 (player.transform.position.x+3, player.transform.position.y+1, transform.position.z);
+		if (player!=null) {
+			transform.position = new Vector3 (player.transform.position.x+3, player.transform.position.y+1, transform.position.z);
+		}
+
 	}
 }
