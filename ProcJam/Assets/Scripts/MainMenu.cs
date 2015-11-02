@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour {
 	
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
+	public GameObject ControllerControlsMenu;
 	public AudioSource GameMusic;
 	public float MusicVolume;
 	public Slider MusicVolumeSlider;
@@ -15,7 +16,10 @@ public class MainMenu : MonoBehaviour {
 
 	enum MenuState{
 		Main,
-		Options
+		Options,
+		Controls,
+		PCControls,
+		ControllerControls
 	}
 
 	void Start(){
@@ -50,6 +54,8 @@ public class MainMenu : MonoBehaviour {
 		case MenuState.Options:
 			currentMenu = optionsMenu;
 			break;
+		case MenuState.Controls:
+			currentMenu = controlsMenu;
 		}
 
 		//Set the new menu to active
