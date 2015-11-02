@@ -12,6 +12,9 @@ public class MainMenu : MonoBehaviour {
 	public AudioSource GameMusic;
 	public float MusicVolume;
 	public Slider MusicVolumeSlider;
+	public GameObject game;
+
+	public GameObject menu;
 
 	GameObject currentMenu; //The current menu we have open
 
@@ -24,14 +27,13 @@ public class MainMenu : MonoBehaviour {
 		ControllerControls
 	}
 
-	void Start(){
-		MusicVolume = GlobalAudioController.Instance.MusicVolume;
-		GameMusic.volume = MusicVolumeSlider.value;
-		GameMusic.Play ();
-	}
 
 	//Awake gets called when the class is instantiated
 	void Awake () {
+		game.SetActive (false);
+		//MusicVolume = GlobalAudioController.Instance.MusicVolume;
+		GameMusic.volume = MusicVolumeSlider.value;
+		GameMusic.Play ();
 		optionsMenu.SetActive (false);
 		controlsMenu.SetActive (false);
 		ControllerControlsMenu.SetActive (false);
@@ -79,7 +81,8 @@ public class MainMenu : MonoBehaviour {
 	/*If you click on the StartButton gameobject in the heirarchy (Menu->MenuCanvas->MainMenu->StartButton) 
 	  and scroll down to On Click() you can see where this is linked*/
 	public void StartGame(){
-		Application.LoadLevel ("Game");
+		gameObject.SetActive (false);
+		game.SetActive (true);
 	}
 
 	//Sets the main menu gameobject to inactive and the options gameobject to active
