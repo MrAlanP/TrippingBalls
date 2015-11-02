@@ -35,17 +35,17 @@ public class BossBalls : MonoBehaviour {
 		}
 	}
 
-	public void Hurt(){
-		if(isAlive){
-			bossHurt.Play ();
-			health--;
-		
-			if(health<=0){
-				isAlive = false;
-				boss.Kill();
-			}
-		}
-	}
+//	public void Hurt(){
+//		if(isAlive){
+//			bossHurt.Play ();
+//			health--;
+//		
+//			if(health<=0){
+//				isAlive = false;
+//				boss.Kill();
+//			}
+//		}
+//	}
 
 
 	public void Hide(){
