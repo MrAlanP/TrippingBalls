@@ -184,6 +184,7 @@
     <Compile Include="Assets\grappleHook.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\AlphaSelfIllum.shader" />
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween.XML" />
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween43.xml" />
     <None Include="Assets\Imported\Demigiant\DOTween\DOTween46.xml" />

@@ -233,6 +233,7 @@
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
+     <None Include="Assets\AlphaSelfIllum.shader" />
      <None Include="Assets\Imported\Standard Assets\Cameras\CameraGuidelines.txt" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
@@ -251,16 +252,16 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>C:/Users/Liam/Documents/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
