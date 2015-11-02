@@ -199,9 +199,9 @@ public class Boss : MonoBehaviour
            jump = Physics2D.Raycast(new Vector2(transform.position.x,transform.position.y-1.0f), -Vector2.up, rayLength);
            if (jump)
            {
-               if (Vector3.Distance(gameObject.transform.localPosition, player.transform.localPosition) >= 1)
+               if (Vector3.Distance(gameObject.transform.position, player.transform.position) >= 1)
                {
-                   if (gameObject.transform.localPosition.x < player.transform.localPosition.x)
+                   if (gameObject.transform.position.x < player.transform.position.x)
                    {
                        gameObject.GetComponent<Rigidbody2D>().AddForceAtPosition(new Vector2(250, 2000), new Vector2(gameObject.transform.localPosition.x, gameObject.transform.localPosition.y));//AddForce(new Vector2(0, 55));
                    }
@@ -212,10 +212,10 @@ public class Boss : MonoBehaviour
                    }
                }
                jump = false;
-               if (gameObject.transform.localPosition.y >=3)
-               {
-                  gameObject.transform.Translate(player.transform.localPosition.x, gameObject.transform.localPosition.y, 0,Space.World);
-               }
+               //if (gameObject.transform.localPosition.y >=3)
+               //{
+               //   gameObject.transform.Translate(player.transform.localPosition.x, gameObject.transform.localPosition.y, 0,Space.World);
+               //}
            }
            choose = 4;
        }
