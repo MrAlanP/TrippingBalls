@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BossHealth.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Basics.cs" />
     <Compile Include="Assets\Imported\Demigiant\DOTween\Examples\Sequences.cs" />
     <Compile Include="Assets\Imported\JSON\JSONObject.cs" />
@@ -167,19 +168,22 @@
     <Compile Include="Assets\Scripts\BallProjectile.cs" />
     <Compile Include="Assets\Scripts\Boss.cs" />
     <Compile Include="Assets\Scripts\BossBalls.cs" />
+    <Compile Include="Assets\Scripts\BossTakeDamage.cs" />
     <Compile Include="Assets\Scripts\BossTrigger.cs" />
-    <Compile Include="Assets\Scripts\Damage.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
     <Compile Include="Assets\Scripts\GlobalAudioController.cs" />
-    <Compile Include="Assets\Scripts\LineRendererCode.cs" />
+    <Compile Include="Assets\Scripts\GrappleManager.cs" />
+    <Compile Include="Assets\Scripts\GrapplePoint.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerAim.cs" />
+    <Compile Include="Assets\Scripts\PlayerGrapple.cs" />
     <Compile Include="Assets\Scripts\PlayerHUD.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+    <Compile Include="Assets\Scripts\PlayerTakeDamage.cs" />
     <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
     <Compile Include="Assets\ballRain.cs" />
     <Compile Include="Assets\grappleHook.cs" />
