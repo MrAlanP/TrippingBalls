@@ -64,3 +64,5 @@ $RECYCLE.BIN/
 *.lnk
 *.csproj
 ProcJam/ProcJam.sln
+ProcJam/Assembly-CSharp-Editor-vs.csproj
+*.csproj
