@@ -4,14 +4,18 @@ using System.Collections;
 public class Game : MonoBehaviour {
 
 	bool isPaused = false;
-	public AudioSource mainMusic;
-	public float musicVol = 1;
+	public AudioSource GameMusic;
+	public float MusicVolume;
 
+
+	void Start(){
+		MusicVolume = GlobalAudioController.Instance.MusicVolume;
+	}
 
 	// Use this for initialization
 	void Awake () {
 
-		mainMusic.Play ();
+		GameMusic.Play ();
 	}
 	
 	// Update is called once per frame
@@ -19,18 +23,19 @@ public class Game : MonoBehaviour {
 		if (isPaused) {
 			return;
 		}
-
-
-
 	}
 
 	public void Pause(){
 		isPaused = true;
-		mainMusic.Pause ();
+		GameMusic.Pause ();
 	}
 
 	public void Resume(){
 		isPaused = false;
-		mainMusic.Play ();
+		GameMusic.Play ();
+	}
+
+	public void SaveSettings(){
+		GlobalAudioController.Instance.MusicVolume = MusicVolume;
 	}
 }
