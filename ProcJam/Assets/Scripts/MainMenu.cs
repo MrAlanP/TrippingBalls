@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour {
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
 
+
 	GameObject currentMenu; //The current menu we have open
 
 
