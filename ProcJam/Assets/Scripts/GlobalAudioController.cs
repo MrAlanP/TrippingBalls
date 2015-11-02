@@ -11,11 +11,11 @@ public class GlobalAudioController : MonoBehaviour {
 	void Start () {
 	
 		if (Instance == null) {
-			DontDestroyOnLoad (gameObject);
+			//DontDestroyOnLoad (gameObject);
 			Instance = this;
 		}
 		else if (Instance != this){
-			Destroy(gameObject);
+			//Destroy(gameObject);
 		}
 	}
 	
