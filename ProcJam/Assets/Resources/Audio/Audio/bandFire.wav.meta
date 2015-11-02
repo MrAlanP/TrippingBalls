@@ -1,12 +1,7 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 6023980d436c15b4eb62dd9615640719
-timeCreated: 1446479201
-=======
-guid: a745b9c42cb16d84e9ca09059f301e57
-timeCreated: 1446478972
->>>>>>> origin/master
-licenseType: Pro
+guid: d66db87232326064d96ff780404d1a29
+timeCreated: 1446479725
+licenseType: Free
 AudioImporter:
   serializedVersion: 6
   defaultSettings:
