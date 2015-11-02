@@ -67,7 +67,7 @@ public class BallProjectile : MonoBehaviour
 	{
 		if (doesDamage) {
 			if (hit.collider) {
-				Debug.Log(hit.gameObject.name);
+//				Debug.Log(hit.gameObject.name);
 				Player player = hit.collider.GetComponent<Player>();
 				if(player!=null){
 					player.Hurt();
