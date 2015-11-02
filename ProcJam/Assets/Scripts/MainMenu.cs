@@ -30,7 +30,12 @@ public class MainMenu : MonoBehaviour {
 
 	//Awake gets called when the class is instantiated
 	void Awake () {
-		game.SetActive (false);
+        if (game)
+        {
+            game.SetActive(false);
+
+        }
+		
 		//MusicVolume = GlobalAudioController.Instance.MusicVolume;
 		GameMusic.volume = MusicVolumeSlider.value;
 		GameMusic.Play ();

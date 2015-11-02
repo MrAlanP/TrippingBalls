@@ -25,7 +25,7 @@ public class Game : MonoBehaviour {
 			return;
 		}
 		if (Input.GetAxis ("Cancel")!=0) {
-			//Application.LoadLevel("MainMenu");
+			Application.LoadLevel("Game");
 		}
 	}
 
