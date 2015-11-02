@@ -9,6 +9,7 @@ public class RubberBandBullet : MonoBehaviour {
 	Rigidbody2D body;
 	Animator animator;
 	public SpriteRenderer spriteRenderer;
+    public bool activeBand = true;
 
 
 	public enum BandState{
@@ -108,6 +109,7 @@ public class RubberBandBullet : MonoBehaviour {
 
 	void PlayerPickup(Player player){
 		Disable ();
+        activeBand = false;
 		bandState = BandState.Disabled;
 		player.AddRubberBandAmmo (gameObject);
 

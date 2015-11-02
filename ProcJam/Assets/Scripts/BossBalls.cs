@@ -9,7 +9,7 @@ public class BossBalls : MonoBehaviour {
 	[HideInInspector]
 	public bool isVisible = true;
 	public AudioSource bossHurt;
-
+    float ballBlood = 0;
 	public ParticleSystem bloodParticles;
 
 	public Boss boss;
@@ -35,6 +35,9 @@ public class BossBalls : MonoBehaviour {
 			gameObject.transform.localScale = new Vector3 (scale, scale, scale);
 
 		}
+       
+       
+
 	}
 
 //	public void Hurt(){
@@ -72,7 +75,8 @@ public class BossBalls : MonoBehaviour {
 				if(player!=null){
 					player.Hurt();
 					bloodParticles.Emit(100);
-					doesDamage = false;
+                    bloodParticles.Play();
+                    doesDamage = false;
 				}
 			}
 		}
