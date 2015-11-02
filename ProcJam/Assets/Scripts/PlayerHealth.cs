@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class PlayerHealth : MonoBehaviour {
 
-	const int START_HEALTH = 3;
+	const int START_HEALTH = 6;
 	public int currentHealth;
 	public Slider healthSlider;
 
@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour {
 		currentHealth--;
 		currentHealth = Mathf.Clamp(currentHealth,0,START_HEALTH);
 		if (helmetDamageSprites.Length > 0) {
-			helmetSprite.sprite = helmetDamageSprites [3-currentHealth];
+			helmetSprite.sprite = helmetDamageSprites [3-(currentHealth/2)];
 		}
 		healthSlider.value = ((float)currentHealth/(float)START_HEALTH) * 100;
 
