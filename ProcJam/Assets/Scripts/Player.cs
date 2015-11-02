@@ -18,6 +18,8 @@ public class Player : MonoBehaviour {
 	public AudioSource rubberBandPickup;
 	public AudioSource hurt;
 
+	BoxCollider2D collider;
+
 	Rigidbody2D body;
 
 	public Animator anim;
@@ -50,7 +52,7 @@ public class Player : MonoBehaviour {
 		}
 		UpdateRubberBandColour ();
 
-
+		collider = gameObject.GetComponent<BoxCollider2D> ();
 		playerHealth = gameObject.GetComponent<PlayerHealth> ();
 		body = gameObject.GetComponent<Rigidbody2D> ();
 
@@ -76,20 +78,23 @@ public class Player : MonoBehaviour {
 		canWalkLeft = true;
 		canWalkRight = true;
 
-		RaycastHit2D right = Physics2D.Raycast (transform.position + new Vector3(0.1f,0,0), new Vector2 (1, 0), 0.03f);
-		RaycastHit2D left = Physics2D.Raycast (transform.position - new Vector3(0.2f,0,0), new Vector2 (-1, 0), 0.03f);
-		if (right) {
-			if(right.collider.gameObject.tag!="Player"){
-				canWalkRight = false;
+
+		for (int i = 0; i<3; i++) {
+			RaycastHit2D rightRay = Physics2D.Raycast (transform.position + new Vector3(0.1f,collider.bounds.extents.y-(collider.bounds.extents.y*0.5f*i),0), new Vector2 (1, 0), 0.03f);
+			if (rightRay) {
+				if(rightRay.collider.gameObject.tag!="Player"){
+					canWalkRight = false;
+				}
 			}
 
-		}
-		if (left) {
-			if(left.collider.gameObject.tag!="Player"){
-				canWalkLeft = false;
+			RaycastHit2D leftRay = Physics2D.Raycast (transform.position + new Vector3(-0.2f,collider.bounds.extents.y-(collider.bounds.extents.y*0.5f*i),0), new Vector2 (-1, 0), 0.03f);
+			if (leftRay) {
+				if(leftRay.collider.gameObject.tag!="Player"){
+					canWalkLeft = false;
+				}
 			}
-			
 		}
+
 	}
 
 	void OnCollisionStay2D(Collision2D col){

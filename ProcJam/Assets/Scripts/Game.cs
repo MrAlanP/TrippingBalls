@@ -6,10 +6,11 @@ public class Game : MonoBehaviour {
 	bool isPaused = false;
 	public AudioSource GameMusic;
 	public float MusicVolume;
-
+	GlobalAudioController audioController;
 
 	void Start(){
-		MusicVolume = GlobalAudioController.Instance.MusicVolume;
+		audioController = gameObject.GetComponent<GlobalAudioController> ();
+		MusicVolume = audioController.MusicVolume;
 	}
 
 	// Use this for initialization
@@ -22,6 +23,9 @@ public class Game : MonoBehaviour {
 	void Update () {
 		if (isPaused) {
 			return;
+		}
+		if (Input.GetAxis ("Cancel")!=0) {
+			//Application.LoadLevel("MainMenu");
 		}
 	}
 
@@ -36,6 +40,6 @@ public class Game : MonoBehaviour {
 	}
 
 	public void SaveSettings(){
-		GlobalAudioController.Instance.MusicVolume = MusicVolume;
+		audioController.MusicVolume = MusicVolume;
 	}
 }

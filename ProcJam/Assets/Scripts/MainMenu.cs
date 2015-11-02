@@ -6,6 +6,9 @@ public class MainMenu : MonoBehaviour {
 	
 	public GameObject mainMenu;
 	public GameObject optionsMenu;
+	public GameObject controlsMenu;
+	public GameObject PCControlsMenu;
+	public GameObject ControllerControlsMenu;
 	public AudioSource GameMusic;
 	public float MusicVolume;
 	public Slider MusicVolumeSlider;
@@ -15,7 +18,10 @@ public class MainMenu : MonoBehaviour {
 
 	enum MenuState{
 		Main,
-		Options
+		Options,
+		Controls,
+		PCControls,
+		ControllerControls
 	}
 
 	void Start(){
@@ -27,6 +33,9 @@ public class MainMenu : MonoBehaviour {
 	//Awake gets called when the class is instantiated
 	void Awake () {
 		optionsMenu.SetActive (false);
+		controlsMenu.SetActive (false);
+		ControllerControlsMenu.SetActive (false);
+		PCControlsMenu.SetActive (false);
 
 		SetMenuState (MenuState.Main);
 	}
@@ -50,6 +59,12 @@ public class MainMenu : MonoBehaviour {
 		case MenuState.Options:
 			currentMenu = optionsMenu;
 			break;
+		case MenuState.Controls:
+			currentMenu = controlsMenu;
+			break;
+		case MenuState.ControllerControls:
+			currentMenu = ControllerControlsMenu;
+			break;
 		}
 
 		//Set the new menu to active
@@ -70,6 +85,14 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void CloseOptions(){
+		SetMenuState (MenuState.Main);
+	}
+
+	public void OpenControls(){
+		SetMenuState (MenuState.Controls);
+	}
+
+	public void CloseControls(){
 		SetMenuState (MenuState.Main);
 	}
 
