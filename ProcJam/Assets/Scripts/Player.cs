@@ -61,6 +61,10 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if (playerHealth.isDead) {
+			return;
+		}
+
 		if (controlType == ControlType.Keyboard) {
 			if(Input.GetJoystickNames().Length>0){
 				if(Input.GetJoystickNames()[0]!=""){
@@ -242,6 +246,9 @@ public class Player : MonoBehaviour {
 	public void Hurt(){
 		playerHealth.takeDamage ();
 		hurt.Play ();
+
+
+
 	}
 
 	public void UseGrapple(){
