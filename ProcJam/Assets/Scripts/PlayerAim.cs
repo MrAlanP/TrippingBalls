@@ -6,7 +6,6 @@ public class PlayerAim : MonoBehaviour {
 
 
 	public Player player;
-	public Camera mainCam;
 	public GameObject rubberBand;
 	public GameObject trajectory;
 	public GameObject trajectoryPointPrefab;
@@ -71,7 +70,7 @@ public class PlayerAim : MonoBehaviour {
 		if (Input.GetButton ("Fire1")) {
 			SetAimingActive ();
 			
-			Vector2 mousePos = mainCam.ScreenToWorldPoint (Input.mousePosition);
+			Vector2 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Vector2 mousePlayerOffset = mousePos - new Vector2 (player.transform.localPosition.x, player.transform.localPosition.y);
 			
 			aimAngle = Mathf.Atan2 (mousePlayerOffset.y, mousePlayerOffset.x);

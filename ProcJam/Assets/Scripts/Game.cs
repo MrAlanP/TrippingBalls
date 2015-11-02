@@ -23,6 +23,7 @@ public class Game : MonoBehaviour {
 		if (isPaused) {
 			return;
 		}
+
 	}
 
 	public void Pause(){
