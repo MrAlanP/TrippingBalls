@@ -62,6 +62,9 @@ public class MainMenu : MonoBehaviour {
 		case MenuState.Controls:
 			currentMenu = controlsMenu;
 			break;
+		case MenuState.PCControls:
+			currentMenu = PCControlsMenu;
+			break;
 		case MenuState.ControllerControls:
 			currentMenu = ControllerControlsMenu;
 			break;
@@ -94,6 +97,22 @@ public class MainMenu : MonoBehaviour {
 
 	public void CloseControls(){
 		SetMenuState (MenuState.Main);
+	}
+
+	public void OpenPCControls(){
+		SetMenuState (MenuState.PCControls);
+	}
+	
+	public void ClosePCControls(){
+		SetMenuState (MenuState.Controls);
+	}
+
+	public void OpenControllerControls(){
+		SetMenuState (MenuState.ControllerControls);
+	}
+	
+	public void CloseControllerControls(){
+		SetMenuState (MenuState.Controls);
 	}
 
 	//Quit the game
