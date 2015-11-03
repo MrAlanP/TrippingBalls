@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-public enum attack
-{
-    SWING,
-    THROW,
-    JUMP,
-    POUND,
-    NOTHING
-}
+
 public class Boss : MonoBehaviour 
 {
+    public enum attack
+    {
+        SWING,
+        THROW,
+        JUMP,
+        POUND,
+        NOTHING
+    }
     public GameObject player;
     public GameObject ballsDropped;
     public GameObject explode;

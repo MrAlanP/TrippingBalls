@@ -29,7 +29,7 @@ public class BossHealth : MonoBehaviour {
             bleedReset += Time.deltaTime;
             if (bleedReset >= 0.2f)
             {
-                bossBalls.bloodParticles.Stop();
+               // bossBalls.bloodParticles.Stop();
             }
         }
         
@@ -39,7 +39,7 @@ public class BossHealth : MonoBehaviour {
 		currentHealth -= amount;
 
 		healthSlider.value = currentHealth;
-        bossBalls.bloodParticles.Play();
+        //bossBalls.bloodParticles.Play();
         bleedReset = 0;
 
 		if (currentHealth <= 0 && !isDead) {

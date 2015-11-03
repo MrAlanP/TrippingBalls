@@ -29,6 +29,7 @@ public class ballRain : MonoBehaviour {
         {
             Destroy(gameObject);
         }
+  
 	}
   void OnCollisionEnter2D(Collision2D hit)
     {
@@ -48,5 +49,6 @@ public class ballRain : MonoBehaviour {
 				}
 			}
 		}
+      
     }
 }

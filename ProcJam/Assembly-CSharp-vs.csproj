@@ -164,6 +164,7 @@
      <Compile Include="Assets\Scripts\PlayerTakeDamage.cs" />
      <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
      <Compile Include="Assets\ballRain.cs" />
+     <Compile Include="Assets\bossBehaviour.cs" />
      <Compile Include="Assets\grappleHook.cs" />
      <None Include="Assets\Imported\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />

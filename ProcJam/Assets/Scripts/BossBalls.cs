@@ -8,23 +8,23 @@ public class BossBalls : MonoBehaviour {
 	public bool isAlive = true;
 	[HideInInspector]
 	public bool isVisible = true;
-	public AudioSource bossHurt;
+	//public AudioSource bossHurt;
     float ballBlood = 0;
-	public ParticleSystem bloodParticles;
+	//public ParticleSystem bloodParticles;
 
-	public Boss boss;
+	
 
 	SpriteRenderer spriteRenderer;
-	BoxCollider2D collider;
+	CircleCollider2D collider;
 
-	float scaleTimer = 0;
+	public float scaleTimer = 0;
 
 
 	bool doesDamage = true;
 	// Use this for initialization
 	void Awake () {
 		spriteRenderer = gameObject.GetComponent<SpriteRenderer> ();
-		collider = gameObject.GetComponent<BoxCollider2D> ();
+		collider = gameObject.GetComponent<CircleCollider2D> ();
 	}
 	
 	// Update is called once per frame

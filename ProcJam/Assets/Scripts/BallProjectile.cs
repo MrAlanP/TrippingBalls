@@ -13,8 +13,8 @@ public class BallProjectile : MonoBehaviour
 	void Start () 
 	{
 		fire = false;
-		fireTime = 3.0f;
-		gameObject.GetComponent<BoxCollider2D>().enabled = false;
+		fireTime = 1.0f;
+		//gameObject.GetComponent<BoxCollider2D>().enabled = false;
 		gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
 		// gameObject.transform.SetParent(boss.transform,true);
 		player = GameObject.FindGameObjectWithTag("Player");
@@ -38,19 +38,20 @@ public class BallProjectile : MonoBehaviour
 		}
 		if (fire)
 		{
-			gameObject.GetComponent<BoxCollider2D>().enabled = true;
+			//gameObject.GetComponent<BoxCollider2D>().enabled = true;
 			gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
 			
 			
-			if (player.transform.localPosition.x > gameObject.transform.localPosition.x)
+			if (player.transform.position.x > gameObject.transform.position.x)
 			{
-				gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(50, 0));
+				//gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(50, 0));
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(10, 0);
 				
 			}
 			else
 			{
-				gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-50, 0));
-				
+				//gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-50, 0));
+                gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(-10, 0);
 			}
 			
 			
