@@ -51,6 +51,7 @@ public class BossHealth : MonoBehaviour {
 		currentHealth -= amount;
 
 		healthSlider.value = currentHealth;
+		bossBalls.Bleed ();
         //bossBalls.bloodParticles.Play();
         bleedReset = 0;
 

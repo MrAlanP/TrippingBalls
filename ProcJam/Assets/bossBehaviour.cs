@@ -10,7 +10,7 @@ enum BossAttack
     MOVE
 }
 public class bossBehaviour : MonoBehaviour {
-    GameObject balls;
+    public GameObject balls;
     GameObject player;
     public GameObject PBalls;
     public GameObject ballsDropped;
@@ -26,7 +26,6 @@ public class bossBehaviour : MonoBehaviour {
 	void Start () 
     {
         
-        balls = GameObject.FindWithTag("bossBalls");
         player = GameObject.FindWithTag("Player");
         body = gameObject.GetComponent<Rigidbody2D>();
 	}
@@ -34,6 +33,10 @@ public class bossBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
     {
+
+		if (!isAlive) {
+			return;
+		}
           coolDown += Time.deltaTime;
           if (coolDown >= 5.0f)
           {
@@ -187,7 +190,9 @@ public class bossBehaviour : MonoBehaviour {
     void sackLasso()
     {
         {
-          
+          	if(balls==null){
+				return;
+			}
             balls.GetComponent<SpringJoint2D>().enabled = false;
             if (Vector3.Distance(player.transform.localPosition, gameObject.transform.localPosition) >= 1f)
             {

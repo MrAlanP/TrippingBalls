@@ -10,7 +10,7 @@ public class BossBalls : MonoBehaviour {
 	public bool isVisible = true;
 	//public AudioSource bossHurt;
     float ballBlood = 0;
-	//public ParticleSystem bloodParticles;
+	public ParticleSystem bloodParticles;
 
 	
 
@@ -38,6 +38,10 @@ public class BossBalls : MonoBehaviour {
        
        
 
+	}
+
+	public void Bleed(){
+		bloodParticles.Play ();
 	}
 
 //	public void Hurt(){

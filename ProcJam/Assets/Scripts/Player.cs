@@ -255,9 +255,10 @@ public class Player : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		
-		if (other.gameObject.GetComponent<Enemy>()) {
+		if (other.gameObject.GetComponent<Enemy>() || other.gameObject.GetComponent<BallProjectile>() || other.gameObject.GetComponent<ballRain>()) {
 			Hurt ();
 		}
+
 	}
 
 	public void Hurt(){
