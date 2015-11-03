@@ -8,6 +8,7 @@ public class Game : MonoBehaviour {
 	public AudioSource GameMusic;
 	public float MusicVolume;
 	public Slider MusicVolSlider;
+	public MainMenu Menus;
 
 	void Start(){
 
@@ -25,9 +26,9 @@ public class Game : MonoBehaviour {
 		if (isPaused) {
 			return;
 		}
-	//	if (Input.GetAxis ("Cancel")!=0) {
-	//		Application.LoadLevel("Game");
-	//	}
+		if (Input.GetAxis ("Cancel")!=0) {
+			Menus.OpenPause ();
+		}
 	}
 
 	public void Pause(){
