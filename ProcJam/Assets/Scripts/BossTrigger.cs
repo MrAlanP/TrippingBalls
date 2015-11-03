@@ -8,10 +8,15 @@ public class BossTrigger : MonoBehaviour {
 	public PlayerHUD playerHUD;
 	public Slider healthSlider;
 
-	void OnTriggerEnter2D(Collider2D col){
+	bool triggered = false;
 
+	void OnTriggerEnter2D(Collider2D col){
+		if (triggered) {
+			return;
+		}
 		if (col.gameObject.GetComponent<Player> ()) {
 			//boss.Activate();
+			triggered = true;
             Instantiate(boss, new Vector3(236.54f, 7, 0),new Quaternion(0,0,0,0));
 			playerHUD.ShowBossHealth();
 		}

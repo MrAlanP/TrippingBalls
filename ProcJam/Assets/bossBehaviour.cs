@@ -20,12 +20,12 @@ public class bossBehaviour : MonoBehaviour {
     BossAttack Attack;
     float coolDown;
     int choose;
-    bool isAlive;
+    bool isAlive = true;
     public GameObject explode;
 	// Use this for initialization
-	void Start () 
+	void Awake () 
     {
-        
+
         player = GameObject.FindWithTag("Player");
         body = gameObject.GetComponent<Rigidbody2D>();
 	}
