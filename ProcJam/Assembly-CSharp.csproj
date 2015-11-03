@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity5.0.1/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity5.0.1/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -161,11 +161,9 @@
      <Compile Include="Assets\Scripts\PlayerGrapple.cs" />
      <Compile Include="Assets\Scripts\PlayerHUD.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
-     <Compile Include="Assets\Scripts\PlayerTakeDamage.cs" />
      <Compile Include="Assets\Scripts\RubberBandBullet.cs" />
      <Compile Include="Assets\ballRain.cs" />
      <Compile Include="Assets\bossBehaviour.cs" />
-     <Compile Include="Assets\grappleHook.cs" />
      <None Include="Assets\Imported\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Imported\Demigiant\DOTween\readme.txt" />
@@ -256,22 +254,22 @@
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Imported\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.0.1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="DOTween">
- <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
+ <HintPath>C:/Users/Alan/Documents/UWE/Games Tech/Year 3/CGD/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
- <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
+ <HintPath>C:/Users/Alan/Documents/UWE/Games Tech/Year 3/CGD/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
  <Reference Include="DOTween46">
- <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <HintPath>C:/Users/Alan/Documents/UWE/Games Tech/Year 3/CGD/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween46.dll</HintPath>
  </Reference>
  <Reference Include="DOTween50">
- <HintPath>C:/Users/Chris/Documents/GitHub/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
+ <HintPath>C:/Users/Alan/Documents/UWE/Games Tech/Year 3/CGD/TrippingBalls/ProcJam/Assets/Imported/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+ <HintPath>C:/Program Files/Unity5.0.1/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
