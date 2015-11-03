@@ -27,7 +27,7 @@ public class Player : MonoBehaviour {
 
 	float movementSpeed = 4.0f;
 
-	float previousFireAxis = 0;
+
 
 	bool isGrounded = false;
 	bool canWalkLeft = true;
@@ -84,20 +84,24 @@ public class Player : MonoBehaviour {
 
 
 		for (int i = 0; i<3; i++) {
-			RaycastHit2D rightRay = Physics2D.Raycast (transform.position + new Vector3(0.1f,collider.bounds.extents.y-(collider.bounds.extents.y*0.5f*i),0), new Vector2 (1, 0), 0.03f);
+			float bottom = -collider.bounds.extents.y;
+			float offset = collider.bounds.extents.y;
+			RaycastHit2D rightRay = Physics2D.Raycast (transform.position + new Vector3(0.1f,bottom+(offset*i),0), new Vector2 (1, 0), 0.03f);
 			if (rightRay) {
 				if(rightRay.collider.gameObject.tag!="Player"){
 					canWalkRight = false;
 				}
 			}
 
-			RaycastHit2D leftRay = Physics2D.Raycast (transform.position + new Vector3(-0.2f,collider.bounds.extents.y-(collider.bounds.extents.y*0.5f*i),0), new Vector2 (-1, 0), 0.03f);
+			RaycastHit2D leftRay = Physics2D.Raycast (transform.position + new Vector3(-0.2f,bottom+(offset*i),0), new Vector2 (-1, 0), 0.03f);
 			if (leftRay) {
 				if(leftRay.collider.gameObject.tag!="Player"){
 					canWalkLeft = false;
 				}
 			}
 		}
+
+
 
 	}
 
@@ -108,11 +112,9 @@ public class Player : MonoBehaviour {
 			isGrounded = false;
 			return;
 		}
-		foreach (ContactPoint2D contacts in col.contacts) {
-			if (Vector3.Angle (Vector3.up, contacts.normal) < 60) {
-
-				isGrounded = true;
-			}
+		RaycastHit2D downRay = Physics2D.Raycast (transform.position + new Vector3(0,-collider.bounds.extents.y,0), new Vector2 (0, -1), 0.03f);
+		if (downRay) {
+			isGrounded = true;
 		}
 	}
 
@@ -157,6 +159,8 @@ public class Player : MonoBehaviour {
 				jump.Play();
 			}
 		}
+
+
 
 
 		if (Input.GetAxis ("Grapple") != 0) {
