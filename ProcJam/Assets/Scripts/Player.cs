@@ -33,6 +33,8 @@ public class Player : MonoBehaviour {
 	bool canWalkLeft = true;
 	bool canWalkRight = true;
 
+	bool isInvincible = false;
+
    	
 	public List<GameObject> rubberBands = new List<GameObject>();
 
@@ -74,6 +76,10 @@ public class Player : MonoBehaviour {
 
 		}
 		UpdateMovement ();
+
+		if (Input.GetButtonDown ("InvincibleToggle")) {
+			ToggleInvincibility();
+		}
 	}
 	
 
@@ -247,12 +253,22 @@ public class Player : MonoBehaviour {
 		body.AddForce (force);
 	}
 
+	void OnTriggerEnter2D(Collider2D other) {
+		
+		if (other.gameObject.GetComponent<Enemy>()) {
+			Hurt ();
+		}
+	}
+
 	public void Hurt(){
-		playerHealth.takeDamage ();
-		hurt.Play ();
+		if (!isInvincible) {
+			playerHealth.takeDamage ();
+			hurt.Play ();
+		}
+	}
 
-
-
+	void ToggleInvincibility(){
+		isInvincible = !isInvincible;
 	}
 
 	public void UseGrapple(){
