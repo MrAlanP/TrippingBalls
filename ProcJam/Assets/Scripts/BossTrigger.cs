@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class BossTrigger : MonoBehaviour {
 
 	public GameObject boss;
 	public PlayerHUD playerHUD;
+	public Slider healthSlider;
 
 	void OnTriggerEnter2D(Collider2D col){
 

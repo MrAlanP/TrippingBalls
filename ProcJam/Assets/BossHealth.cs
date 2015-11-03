@@ -9,6 +9,8 @@ public class BossHealth : MonoBehaviour {
 	public Slider healthSlider;
     public GameObject explode;
     public BossBalls bossBalls;
+	public GameObject trigger;
+	BossTrigger bossTrigger;
 
     float bleedReset = 0.2f;
 	
@@ -17,8 +19,18 @@ public class BossHealth : MonoBehaviour {
 	bool isDead;
 
 	void Awake () {
-		
+
+		trigger = GameObject.FindGameObjectWithTag("Trigger");
+
+		bossTrigger = trigger.GetComponent<BossTrigger>();
+
+		if(bossTrigger == null){
+
+			Debug.Log("fuck everything");
+		}
+
 		currentHealth = START_HEALTH;
+		healthSlider = bossTrigger.healthSlider;
 
 	}
 

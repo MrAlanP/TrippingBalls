@@ -23,7 +23,7 @@ public class BossTakeDamage : MonoBehaviour {
 
 		if (iframecount >= 0.1f) {
 				
-			if (coll.gameObject.tag == "Boss") {
+			if (coll.gameObject.tag == "bossBalls") {
 				BossHealth bossHealth = coll.gameObject.GetComponent<BossHealth>();
 				if(bossHealth != null){
 					bossHealth.takeDamage(10);
