@@ -23,6 +23,8 @@ public class PlayerAim : MonoBehaviour {
 	float powerUpTime = 0.5f;
 	float snapTime = 3.0f;
 
+	float previousFireAxis = 0;
+
 
 
 	List<GameObject> trajectoryPoints;
@@ -108,7 +110,7 @@ public class PlayerAim : MonoBehaviour {
 
 		SetAimingActive(!(Mathf.Abs (joyRX) < 0.3f && Mathf.Abs (joyRY) < 0.3f));
 		if (aimingActive) {
-			aimAngle = Mathf.Atan2 (joyRY, -joyRX);
+			aimAngle = Mathf.Atan2 (-joyRY, joyRX);
 			SetAimPos (aimAngle);
 		}
 
@@ -119,12 +121,12 @@ public class PlayerAim : MonoBehaviour {
 			return;
 		}
 
-		if (prevAimingEnabled && !aimingActive) {
-			player.Shoot(shootPower);
+		if (Input.GetAxis ("Shoot")!=0) {
+			if(previousFireAxis==0){
+				player.Shoot(shootPower);
+			}
 		}
-
-
-
+		previousFireAxis = Input.GetAxis ("Shoot");
 
 	}
 
