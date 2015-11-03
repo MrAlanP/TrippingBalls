@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour {
 	public GameObject controlsMenu;
 	public GameObject PCControlsMenu;
 	public GameObject ControllerControlsMenu;
+	public GameObject PauseMenu;
 	public AudioSource GameMusic;
 	public float MusicVolume;
 	public Slider MusicVolumeSlider;
@@ -24,7 +25,8 @@ public class MainMenu : MonoBehaviour {
 		Options,
 		Controls,
 		PCControls,
-		ControllerControls
+		ControllerControls,
+		Pause
 	}
 
 
@@ -43,6 +45,7 @@ public class MainMenu : MonoBehaviour {
 		controlsMenu.SetActive (false);
 		ControllerControlsMenu.SetActive (false);
 		PCControlsMenu.SetActive (false);
+		PauseMenu.SetActive (false);
 
 		SetMenuState (MenuState.Main);
 	}
@@ -75,6 +78,9 @@ public class MainMenu : MonoBehaviour {
 		case MenuState.ControllerControls:
 			currentMenu = ControllerControlsMenu;
 			break;
+		case MenuState.Pause:
+			currentMenu = PauseMenu;
+			break;
 		}
 
 		//Set the new menu to active
@@ -99,6 +105,10 @@ public class MainMenu : MonoBehaviour {
 		SetMenuState (MenuState.Main);
 	}
 
+	public void CloseOptionsPause(){
+		SetMenuState (MenuState.Pause);
+	}
+
 	public void OpenControls(){
 		SetMenuState (MenuState.Controls);
 	}
@@ -106,6 +116,11 @@ public class MainMenu : MonoBehaviour {
 	public void CloseControls(){
 		SetMenuState (MenuState.Main);
 	}
+
+	public void CloseControlsPause(){
+		SetMenuState (MenuState.Pause);
+	}
+
 
 	public void OpenPCControls(){
 		SetMenuState (MenuState.PCControls);
@@ -121,6 +136,22 @@ public class MainMenu : MonoBehaviour {
 	
 	public void CloseControllerControls(){
 		SetMenuState (MenuState.Controls);
+	}
+
+	public void OpenMain (){
+		SetMenuState (MenuState.Main);
+	}
+	
+	public void OpenPause(){
+		if (Input.GetAxis ("Cancel") != 0) {
+			game.SetActive (false);
+			SetMenuState (MenuState.Pause);
+		}
+	}
+
+	public void Resume (){
+		game.SetActive (true);
+		gameObject.SetActive (false);
 	}
 
 	//Quit the game

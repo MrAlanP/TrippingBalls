@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
 
 	bool isPaused = false;
 	public AudioSource GameMusic;
 	public float MusicVolume;
-	GlobalAudioController audioController;
+	public Slider MusicVolSlider;
 
 	void Start(){
-		audioController = gameObject.GetComponent<GlobalAudioController> ();
-		MusicVolume = audioController.MusicVolume;
+
+		MusicVolume = MusicVolSlider.value;
 	}
 
 	// Use this for initialization
@@ -24,22 +25,16 @@ public class Game : MonoBehaviour {
 		if (isPaused) {
 			return;
 		}
-		if (Input.GetAxis ("Cancel")!=0) {
-			Application.LoadLevel("Game");
-		}
+	//	if (Input.GetAxis ("Cancel")!=0) {
+	//		Application.LoadLevel("Game");
+	//	}
 	}
 
 	public void Pause(){
 		isPaused = true;
-		GameMusic.Pause ();
 	}
 
 	public void Resume(){
 		isPaused = false;
-		GameMusic.Play ();
-	}
-
-	public void SaveSettings(){
-		audioController.MusicVolume = MusicVolume;
 	}
 }
