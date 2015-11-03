@@ -69,6 +69,7 @@ public class BossHealth : MonoBehaviour {
 		isDead = true;
         Instantiate(explode).transform.position = gameObject.transform.position;
         Destroy(gameObject);
+		GameObject.FindGameObjectWithTag("Boss").GetComponent<bossBehaviour>().Kill();
 		//knock the boss over
 		//make him look dead
 		//disable movement

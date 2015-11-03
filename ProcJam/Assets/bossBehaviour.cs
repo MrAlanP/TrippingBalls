@@ -219,6 +219,11 @@ public class bossBehaviour : MonoBehaviour {
         gameObject.transform.DetachChildren();
         gameObject.SetActive(false);
         isAlive = false;
+		GameObject ui = GameObject.FindWithTag("UI");
+		Debug.Log (1);
+		if (ui) {
+			ui.GetComponent<PlayerHUD>().ShowVictory();
+		}
 
     }
 }
